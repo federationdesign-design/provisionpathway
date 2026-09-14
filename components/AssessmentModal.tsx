@@ -9,7 +9,8 @@ import styles from './AssessmentModal.module.css';
 // The services popup. One instance, rendered by AssessmentModalProvider and
 // opened from the Pathway nav item and the About the assessment button. All
 // copy comes from `servicesPopup` in the content layer. The services stack on
-// mobile and sit side by side from the desktop breakpoint.
+// mobile and sit side by side from the desktop breakpoint, each with its own
+// booking button at its foot.
 export default function AssessmentModal({
   open,
   onClose,
@@ -71,10 +72,14 @@ export default function AssessmentModal({
         aria-labelledby={titleId}
         onClick={(e) => e.stopPropagation()}
       >
-        <button ref={closeRef} type="button" className={styles.close} onClick={onClose}>
-          <span className={styles.closeLabel}>Close</span>
-          <span aria-hidden="true">&times;</span>
-        </button>
+        {/* A zero height strip pinned to the top of the scrolling panel, so the
+            close control stays in view however far the content scrolls. */}
+        <div className={styles.closeBar}>
+          <button ref={closeRef} type="button" className={styles.close} onClick={onClose}>
+            <span className={styles.closeLabel}>Close</span>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
         <h2 className={styles.title} id={titleId}>
           {servicesPopup.title}
@@ -116,13 +121,14 @@ export default function AssessmentModal({
                     ))}
                   </List>
                 </div>
+
+                {/* Each service carries its own booking button at its foot. */}
+                <div className={styles.cta}>
+                  <BookButton className={styles.ctaButton} />
+                </div>
               </section>
             );
           })}
-        </div>
-
-        <div className={styles.cta}>
-          <BookButton className={styles.ctaButton} />
         </div>
       </div>
     </div>

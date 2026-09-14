@@ -111,10 +111,13 @@ rendered once by `AssessmentModalProvider` in the root layout and opened from
 the `Pathway` navigation item (`ServicesNavButton`, in the header, pinned bar
 and footer) and the `About the assessment` button (`AssessmentCta`). It holds
 both services from `servicesPopup` in `content/homepage.ts`, stacked on mobile
-and in two columns on desktop, with a single shared booking button below both.
-That single button is settled and not to be revisited. The inline homepage
-assessment block still differs from the popup in places; see
-`PLACEHOLDERS.md`.
+and in two columns on desktop. Each service has its own booking button at its
+foot; this replaced an earlier single shared button, at the studio's request.
+The close control is pinned to the top of the panel so it stays in view while
+the content scrolls. The booking buttons are not pinned: pinned buttons covered
+the second service's text on phones and overlapped content on short desktop
+screens. The inline homepage assessment block still differs from the popup in
+places; see `PLACEHOLDERS.md`.
 
 Two em dashes in the comp copy have been set as commas to match house style.
 

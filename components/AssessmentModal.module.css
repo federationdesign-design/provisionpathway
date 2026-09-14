@@ -9,28 +9,47 @@
 }
 
 .panel {
+  /* Named so the pinned close control can offset itself from them. */
+  --panel-pad-top: var(--stack-l);
+  --panel-pad-x: var(--gutter);
+  --close-inset: clamp(10px, 3vw, 18px);
+
   position: relative;
   width: 100%;
   max-width: 720px;
   max-height: 92vh;
   overflow-y: auto;
-  padding: var(--stack-l) var(--gutter) var(--stack-l);
+  padding: var(--panel-pad-top) var(--panel-pad-x) var(--stack-l);
   background: var(--page-bg);
   border-radius: 18px 18px 0 0;
   -webkit-overflow-scrolling: touch;
 }
 
+/* The close control is pinned. Its strip has no height, so it takes no space,
+   and sticks at the top of the panel's content area (sticky offsets are
+   measured inside the scroll container's padding), which is exactly where it
+   sits unscrolled. The control inside is offset back out to the panel's
+   corner, so at rest it renders where it always has. */
+.closeBar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 0;
+}
+
 .close {
   position: absolute;
-  top: clamp(10px, 3vw, 18px);
-  right: clamp(10px, 3vw, 18px);
+  top: calc(var(--close-inset) - var(--panel-pad-top));
+  right: calc(var(--close-inset) - var(--panel-pad-x));
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
   padding: 0;
-  background: none;
+  /* Opaque, so content scrolling beneath the pinned control does not show
+     through it. */
+  background: var(--page-bg);
   border: 1.5px solid var(--button-stroke);
   border-radius: 50%;
   font-size: 22px;
@@ -124,12 +143,18 @@
   line-height: 1;
 }
 
+/* Each service is a column, so its booking button can sit at its foot. */
+.service {
+  display: flex;
+  flex-direction: column;
+}
+
 .cta {
-  margin-top: var(--stack-l);
+  margin-top: var(--stack-m);
 }
 
 /* Desktop: a wider panel with one service per column, divided by a vertical
-   rule, and a single, smaller booking button spanning both columns. */
+   rule, each with a smaller booking button across the foot of its column. */
 @media (min-width: 1024px) {
   /* Centred in the screen rather than sheeted from the bottom, with room above
      and below. The panel's height limit is a share of the overlay, not a vh
@@ -141,6 +166,9 @@
   }
 
   .panel {
+    --panel-pad-top: 2.5vw;
+    --panel-pad-x: 3vw;
+
     max-width: none;
     max-height: 100%;
     width: 64vw;
@@ -169,6 +197,12 @@
 
   .block {
     max-width: none;
+  }
+
+  /* Both columns stretch to the taller one, so the buttons line up. */
+  .cta {
+    margin-top: auto;
+    padding-top: var(--stack-m);
   }
 
   .cta .ctaButton {

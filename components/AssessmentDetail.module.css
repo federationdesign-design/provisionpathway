@@ -134,3 +134,119 @@
   margin-top: var(--stack-m);
   padding-bottom: var(--stack-xl);
 }
+
+/* Desktop: the section dissolves into the ProcessLayout grid. Signposts and
+   post take the centre column, the facts the right, and the obstacles copy
+   drops to the left column beside the photograph. The closing buttons hold
+   their position at the foot of that column until the studio places them. */
+@media (min-width: 1024px) {
+  .section,
+  .detail {
+    display: contents;
+  }
+
+  .post {
+    grid-column: centre-start / details-start;
+    grid-row: 3 / 7;
+    top: 1.15vw;
+    left: 3.35vw;
+    width: 1.2vw;
+  }
+
+  .signs {
+    grid-column: centre-start / details-start;
+    grid-row: 3;
+    margin-top: 1.85vw;
+    margin-bottom: 1.65vw;
+  }
+
+  .signItem + .signItem {
+    margin-top: 1vw;
+  }
+
+  /* The comp staggers the chips slightly, as if seen at an angle. */
+  .signItem:nth-child(1) .sign {
+    margin-left: 1.15vw;
+  }
+
+  .signItem:nth-child(2) .sign {
+    margin-left: 0.7vw;
+  }
+
+  .sign {
+    width: 17.3vw;
+    padding: 0.2vw;
+    clip-path: polygon(0 0, calc(100% - 2.4vw) 0, 100% 50%, calc(100% - 2.4vw) 100%, 0 100%);
+  }
+
+  .signInner {
+    gap: 0.9vw;
+    padding: 1.3vw 3.2vw 1.3vw 1.3vw;
+    clip-path: polygon(0 0, calc(100% - 2.3vw) 0, 100% 50%, calc(100% - 2.3vw) 100%, 0 100%);
+  }
+
+  .signIcon {
+    width: 3vw;
+    height: 3vw;
+  }
+
+  .signLabel {
+    font-size: var(--t-lead);
+  }
+
+  .facts {
+    grid-column: details-start / content-end;
+    grid-row: 3;
+    margin-bottom: 1.65vw;
+  }
+
+  .block {
+    max-width: none;
+    font-size: var(--t-body);
+  }
+
+  .ticks {
+    margin-top: 0.6vw;
+  }
+
+  .tickItem {
+    gap: 0.5vw;
+  }
+
+  .tickItem + .tickItem {
+    margin-top: 0.3vw;
+  }
+
+  .tick {
+    width: 1.45vw;
+    height: 1.45vw;
+    margin-top: 0.1vw;
+  }
+
+  .obstacles {
+    grid-column: content-start / centre-start;
+    grid-row: 4;
+  }
+
+  .obstacles::before {
+    content: '';
+    display: block;
+    width: 29vw;
+    margin: 1.7vw 0 3.5vw;
+    border-top: 0.15vw solid var(--rule);
+  }
+
+  .obstacleHeadline {
+    max-width: none;
+    margin-top: 0;
+    font-size: var(--t-h3);
+    line-height: 1.17;
+  }
+
+  .closingCta {
+    grid-column: content-start / centre-start;
+    grid-row: 6;
+    margin-top: 2vw;
+    padding-bottom: 2.65vw;
+  }
+}

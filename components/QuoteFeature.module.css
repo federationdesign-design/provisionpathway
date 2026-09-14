@@ -62,3 +62,59 @@
   display: flex;
   justify-content: center;
 }
+
+/* Desktop: the section dissolves into the ProcessLayout grid. The quote sits
+   in the left column beneath the obstacles copy, and the photograph fills the
+   right hand side to the page edge with the booking button over its top. */
+@media (min-width: 1024px) {
+  .section {
+    display: contents;
+  }
+
+  .image {
+    grid-column: photo-start / bleed-end;
+    grid-row: 4 / 7;
+    object-position: 50% 30%;
+  }
+
+  .scrim {
+    display: none;
+  }
+
+  .quote {
+    grid-column: content-start / centre-start;
+    grid-row: 5;
+    gap: 0;
+    margin-top: 1.05vw;
+    color: var(--ink);
+  }
+
+  /* Negative side margins trim the glyph's own side bearing and advance so
+     the visible mark sits where the comp places it. */
+  .mark {
+    margin: 1.5vw -0.85vw 0 -1.85vw;
+    font-size: 16vw;
+  }
+
+  .text {
+    max-width: 29.5vw;
+    margin-top: 1.95vw;
+    font-size: var(--t-quote);
+    font-weight: 500;
+    line-height: 1.17;
+  }
+
+  .cta {
+    grid-column: photo-start / bleed-end;
+    grid-row: 4;
+    align-self: start;
+    justify-self: end;
+    margin: 2.4vw 2.95vw 0 0;
+  }
+
+  .cta .ctaButton {
+    background: transparent;
+    border-color: var(--paper);
+    backdrop-filter: none;
+  }
+}

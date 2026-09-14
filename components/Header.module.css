@@ -17,6 +17,10 @@
   flex: 0 0 auto;
 }
 
+.logoLink picture {
+  display: block;
+}
+
 .logo {
   width: clamp(96px, 27vw, 168px);
   height: auto;
@@ -111,4 +115,82 @@
 
 .menuLink:hover {
   color: var(--brand);
+}
+
+/* Desktop: the logo sits on a black field at the left, the navigation runs
+   along the top of the page, and the booking button moves to the top right
+   of the hero. Measurements come from the 2000px comp, divided by 20. */
+@media (min-width: 1024px) {
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    padding: 0 0 0 var(--gutter);
+  }
+
+  .logoLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24.1vw;
+    height: 4.55vw;
+    background: var(--black);
+  }
+
+  .logo {
+    width: auto;
+    height: 3.9vw;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .ctaRow {
+    position: absolute;
+    top: 6.7vw;
+    right: 3.5vw;
+    margin-top: 0;
+  }
+
+  .ctaRow .cta {
+    padding: 1.5vw 3.3vw;
+    border-width: 0.2vw;
+    font-size: var(--t-h3);
+  }
+
+  .menu {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    margin-right: 2.2vw;
+    overflow: visible;
+  }
+
+  .menuList,
+  .menuOpen .menuList {
+    flex-direction: row;
+    padding-top: 0.7vw;
+  }
+
+  .menuList li + li {
+    border-left: 0.15vw solid var(--nav-rule);
+  }
+
+  .menuLink {
+    display: flex;
+    align-items: center;
+    height: 3.85vw;
+    padding: 0 3.85vw;
+    border-bottom: 0;
+    font-size: var(--t-small);
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .menuList li:last-child .menuLink {
+    padding-right: 0;
+  }
 }

@@ -1,8 +1,8 @@
 # Provision Pathway
 
 Single page marketing site for The Provision Pathway, a SEND consultancy in
-Warwickshire. Built mobile first. Desktop is step 3 of the roadmap and is not
-yet implemented.
+Warwickshire. Built mobile first, with the desktop layout added on top from
+1024px. Design comps live in `reference/`.
 
 ## Stack
 
@@ -26,6 +26,7 @@ Verification gates before any commit:
     app/globals.css             colour, type and spacing tokens
     content/homepage.ts         every line of copy on the page
     components/                 one component plus one module.css per section
+    reference/                  desktop and mobile Photoshop comps
 
 Copy changes go in `content/homepage.ts`. Layout files should not need editing
 to change wording.
@@ -51,9 +52,22 @@ green band and headings, so bands render lighter than the comp.
 
 1. Calendly. `site.calendlyUrl` in `content/homepage.ts` is a placeholder.
    Every booking button carries `data-cta="book-meeting"`.
-2. Desktop layout.
-3. Google Analytics, `G-MMW4789DRX`, gated behind cookie consent for UK
+2. Google Analytics, `G-MMW4789DRX`, gated behind cookie consent for UK
    GDPR and PECR.
+
+Outstanding inputs are listed in `PLACEHOLDERS.md`.
+
+## Desktop layout
+
+The type and spacing tokens in `app/globals.css` are re-derived for desktop
+inside a single `min-width: 1024px` block: a pixel value read off the 2000px
+comp becomes value / 20 in vw, so the layout scales with the viewport and
+stays composed at 2800px.
+
+Process, QuoteFeature and AssessmentDetail are wrapped in `ProcessLayout`. At
+desktop that wrapper becomes a grid and the three sections switch to
+`display: contents`, placing their own pieces against the named grid lines
+documented in `components/ProcessLayout.module.css`.
 
 ## Open decisions
 

@@ -32,42 +32,46 @@ export default function AssessmentDetail() {
       </ul>
 
       <div className={styles.detail}>
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.price.label}</strong>
-          <br />
-          {details.price.body}
-        </p>
+        <div className={styles.facts}>
+          <p className={styles.block}>
+            <strong className={styles.label}>{details.price.label}</strong>
+            <br />
+            {details.price.body}
+          </p>
 
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.location.label}</strong>{' '}
-          {details.location.body}
-        </p>
+          <p className={styles.block}>
+            <strong className={styles.label}>{details.location.label}</strong>{' '}
+            {details.location.body}
+          </p>
 
-        <div className={styles.block}>
-          <strong className={styles.label}>{details.included.label}</strong>
-          <ul className={styles.ticks}>
-            {details.included.items.map((item) => (
-              <li className={styles.tickItem} key={item}>
-                <TickIcon className={styles.tick} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.block}>
+            <strong className={styles.label}>{details.included.label}</strong>
+            <ul className={styles.ticks}>
+              {details.included.items.map((item) => (
+                <li className={styles.tickItem} key={item}>
+                  <TickIcon className={styles.tick} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className={styles.block}>
+            <strong className={styles.label}>{details.format.label}</strong>
+            <br />
+            {details.format.body}
+          </p>
         </div>
 
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.format.label}</strong>
-          <br />
-          {details.format.body}
-        </p>
+        <div className={styles.obstacles}>
+          <h2 className={styles.obstacleHeadline}>{obstacles.headline}</h2>
 
-        <h2 className={styles.obstacleHeadline}>{obstacles.headline}</h2>
-
-        {obstacles.body.map((para) => (
-          <p className={styles.block} key={para.slice(0, 24)}>
-            {para}
-          </p>
-        ))}
+          {obstacles.body.map((para) => (
+            <p className={styles.block} key={para.slice(0, 24)}>
+              {para}
+            </p>
+          ))}
+        </div>
 
         <div className={styles.closingCta}>
           <AssessmentCta />

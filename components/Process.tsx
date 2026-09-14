@@ -3,7 +3,7 @@ import styles from './Process.module.css';
 
 export default function Process() {
   return (
-    <section className={styles.section} id="assessment">
+    <section className={styles.section}>
       <h2 className={styles.headline}>{promise.headline}</h2>
       <p className={styles.lead}>{promise.body}</p>
 

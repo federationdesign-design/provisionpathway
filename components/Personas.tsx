@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { personas } from '../content/homepage';
+import BookButton from './BookButton';
 import styles from './Personas.module.css';
 
-export default function Personas() {
+export default function Personas({ className = '' }: { className?: string }) {
   const [index, setIndex] = useState(0);
   const startX = useRef<number | null>(null);
   const current = personas[index];
@@ -28,7 +29,7 @@ export default function Personas() {
 
   return (
     <section
-      className={styles.section}
+      className={`${styles.section} ${className}`}
       aria-roledescription="carousel"
       aria-label="Family situations we help with"
       onTouchStart={onTouchStart}
@@ -40,16 +41,11 @@ export default function Personas() {
           src={current.image}
           alt={current.imageAlt}
           fill
-          sizes="100vw"
+          sizes="(min-width: 1024px) 45vw, 100vw"
           priority
         />
 
         <div className={styles.scrim} />
-
-        <figure className={styles.caption}>
-          <figcaption className={styles.name}>{current.name}</figcaption>
-          <p className={styles.body}>{current.body}</p>
-        </figure>
 
         {personas.length > 1 && (
           <div className={styles.dots} role="tablist" aria-label="Choose a story">
@@ -66,6 +62,17 @@ export default function Personas() {
             ))}
           </div>
         )}
+      </div>
+
+      {/* A sibling of the frame rather than a child, so the caption can overlay
+          the image on mobile and stand beside it on desktop. */}
+      <figure className={styles.caption}>
+        <figcaption className={styles.name}>{current.name}</figcaption>
+        <p className={styles.body}>{current.body}</p>
+      </figure>
+
+      <div className={styles.cta}>
+        <BookButton tone="onDark" />
       </div>
     </section>
   );

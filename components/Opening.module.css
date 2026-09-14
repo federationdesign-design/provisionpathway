@@ -77,3 +77,99 @@
   margin-inline: calc(var(--gutter) * -1);
   background: var(--brand-secondary);
 }
+
+/* Desktop: positioning statement, rule and body on the left, headline and
+   logo on the right, the pathway running between and behind them. The last
+   text row takes up any extra height, so the tall right column never pushes
+   the left column's lines apart. */
+@media (min-width: 1024px) {
+  .section {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto 1fr auto;
+    padding: 2.5vw 3.65vw 0 var(--gutter);
+    overflow: clip;
+  }
+
+  .eyebrow,
+  .subline,
+  .rule,
+  .body {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+  }
+
+  .eyebrow {
+    max-width: 32vw;
+    font-size: var(--t-h3);
+    line-height: 1;
+  }
+
+  .subline {
+    margin-top: 0.33vw;
+    font-size: var(--t-h3);
+    font-weight: 400;
+  }
+
+  .rule {
+    width: 29vw;
+    margin-top: 1.95vw;
+    border-top-width: 0.15vw;
+  }
+
+  .body {
+    max-width: 24vw;
+    margin-top: 1.7vw;
+    font-size: var(--t-micro);
+  }
+
+  .heroWrap {
+    position: static;
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    margin-top: 6.8vw;
+  }
+
+  .headline {
+    max-width: 28vw;
+    margin-left: auto;
+    text-align: right;
+    font-size: var(--t-hero);
+    line-height: 0.97;
+    letter-spacing: -0.02em;
+  }
+
+  .art {
+    position: static;
+    margin-top: 0;
+    aspect-ratio: auto;
+  }
+
+  .path {
+    top: 1.2vw;
+    left: 16.15vw;
+    right: auto;
+    bottom: auto;
+    z-index: 0;
+    width: 53.55vw;
+    height: auto;
+  }
+
+  .watermark {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 17.2vw;
+    margin: 2.45vw 0 0 auto;
+  }
+
+  .divider {
+    position: relative;
+    z-index: 1;
+    grid-column: 1 / -1;
+    height: 1.85vw;
+    margin: 3.1vw -3.65vw 0 calc(var(--gutter) * -1);
+  }
+}

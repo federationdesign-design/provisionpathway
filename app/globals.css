@@ -12,11 +12,14 @@
   /* Derived tones, kept few and deliberate */
   --brand-tint: #eef0e9;
   --rule: #000000;
+  --nav-rule: #cecece;
 
   /* Liquid type scale. Everything grows with the viewport rather than
      stepping at breakpoints, matching the house pattern. */
   --t-hero: clamp(28px, 7.4vw, 64px);
+  --t-h1: var(--t-h2);
   --t-h2: clamp(28px, 7.2vw, 52px);
+  --t-quote: var(--t-body);
   --t-h3: clamp(19px, 4.6vw, 32px);
   --t-lead: clamp(17px, 4.3vw, 24px);
   --t-body: clamp(13px, 3.4vw, 18px);
@@ -32,6 +35,30 @@
 
   --radius-pill: 999px;
   --radius-card: 14px;
+}
+
+/* Desktop. The same tokens, re-derived from the 2000px desktop comp: a value
+   read off the comp in pixels becomes value / 20 in vw. The layout keeps
+   scaling with the viewport, and each clamp only stops at the size the comp
+   would reach at 2800px. */
+@media (min-width: 1024px) {
+  :root {
+    --t-hero: clamp(40px, 4.025vw, 114px);
+    --t-h1: clamp(28px, 2.75vw, 78px);
+    --t-h2: clamp(24px, 2.35vw, 67px);
+    --t-quote: clamp(21px, 2.05vw, 58px);
+    --t-h3: clamp(18px, 1.8vw, 51px);
+    --t-lead: clamp(16px, 1.55vw, 44px);
+    --t-body: clamp(14px, 1.3vw, 37px);
+    --t-small: clamp(13px, 1.15vw, 33px);
+    --t-micro: clamp(12px, 1vw, 29px);
+
+    --gutter: 4.4vw;
+    --stack-s: 0.75vw;
+    --stack-m: 1.5vw;
+    --stack-l: 3.25vw;
+    --stack-xl: 5.8vw;
+  }
 }
 
 *,

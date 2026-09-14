@@ -46,3 +46,11 @@
   background: var(--button-stroke);
   color: var(--black);
 }
+
+@media (min-width: 1024px) {
+  .button {
+    padding: 1.375vw 1.95vw;
+    border-width: 0.2vw;
+    font-size: var(--t-lead);
+  }
+}

@@ -27,13 +27,17 @@ export default function Header() {
     <header className={styles.header} id="top">
       <div className={styles.bar}>
         <a className={styles.logoLink} href="#top" aria-label="The Provision Pathway, home">
-          <img
-            className={styles.logo}
-            src="/assets/logo-green.svg"
-            alt="The Provision Pathway"
-            width={160}
-            height={64}
-          />
+          {/* Desktop sets the logo on a black field, so it swaps to the white artwork. */}
+          <picture>
+            <source media="(min-width: 1024px)" srcSet="/assets/logo-footer-white.svg" />
+            <img
+              className={styles.logo}
+              src="/assets/logo-green.svg"
+              alt="The Provision Pathway"
+              width={160}
+              height={64}
+            />
+          </picture>
         </a>
 
         <button
@@ -53,7 +57,7 @@ export default function Header() {
       </div>
 
       <div className={styles.ctaRow}>
-        <BookButton />
+        <BookButton className={styles.cta} />
       </div>
 
       <nav

@@ -11,7 +11,7 @@ export default function QuoteFeature() {
         src={quote.image}
         alt={quote.imageAlt}
         fill
-        sizes="100vw"
+        sizes="(min-width: 1024px) 52vw, 100vw"
       />
       <div className={styles.scrim} />
 
@@ -23,7 +23,7 @@ export default function QuoteFeature() {
       </blockquote>
 
       <div className={styles.cta}>
-        <BookButton tone="onImage" />
+        <BookButton tone="onImage" className={styles.ctaButton} />
       </div>
     </section>
   );

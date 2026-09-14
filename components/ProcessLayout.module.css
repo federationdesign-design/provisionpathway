@@ -1,0 +1,29 @@
+/* Desktop grid for the process, quote and assessment detail sections. Those
+   sections switch to display: contents at desktop and place their own pieces
+   against the named lines below.
+
+   Columns, as measured on the 2000px comp:
+     bleed-start    0     page edge
+     content-start  88    steps, obstacles and quote
+     centre-start   843   signposts and post
+     photo-start    975   photograph, full bleed to the right edge
+     details-start  1241  pricing, location, inclusions and format
+     content-end    1944
+
+   Rows: 1 headline, 2 lead, 3 steps / signposts / detail, 4 obstacles,
+   5 quote, 6 closing buttons. The photograph and post span rows 4 to 6. */
+@media (min-width: 1024px) {
+  .layout {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+      [bleed-start] var(--gutter)
+      [content-start] 37.75fr
+      [centre-start] 6.6fr
+      [photo-start] 13.3fr
+      [details-start] 35.15fr
+      [content-end] 2.8vw
+      [bleed-end];
+    grid-template-rows: repeat(6, auto);
+  }
+}

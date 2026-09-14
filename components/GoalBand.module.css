@@ -18,3 +18,80 @@
   font-size: var(--t-small);
   line-height: 1.3;
 }
+
+/* The watermark and quick links are desktop only. */
+.watermark,
+.links {
+  display: none;
+}
+
+/* Desktop: three columns. Watermark and quick links on the left, headline and
+   body across the centre, the carousel beneath them with its caption and
+   booking button in the right hand column. A grey band closes the section. */
+@media (min-width: 1024px) {
+  .section {
+    display: grid;
+    grid-template-columns: 22.75vw 1fr;
+    align-items: start;
+    padding: 5.45vw var(--gutter) 5.8vw;
+    border-bottom: 1.9vw solid var(--brand-secondary);
+  }
+
+  .headline {
+    grid-area: 1 / 2;
+    max-width: 65.5vw;
+    margin-top: 0.225vw;
+    font-size: var(--t-h1);
+    line-height: 1.13;
+  }
+
+  .body {
+    grid-area: 2 / 2;
+    max-width: 62.5vw;
+    margin-top: 1.675vw;
+    font-size: var(--t-lead);
+  }
+
+  /* Compounded so it outranks the carousel's own margin reset. */
+  .section .personas {
+    grid-area: 3 / 2;
+    margin-top: 2.45vw;
+  }
+
+  .watermark {
+    display: block;
+    grid-area: 1 / 1 / 3 / 2;
+    width: 19.5vw;
+    height: auto;
+    margin-left: -1.4vw;
+  }
+
+  .links {
+    display: block;
+    grid-area: 3 / 1;
+    margin-top: 4.55vw;
+  }
+
+  .linkList li + li {
+    margin-top: 0.85vw;
+  }
+
+  .link {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.9vw;
+    font-size: var(--t-body);
+  }
+
+  .link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .linkIcon {
+    flex: 0 0 auto;
+    width: 0.55vw;
+    height: 0.7vw;
+  }
+}

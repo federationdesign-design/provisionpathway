@@ -46,6 +46,14 @@ export function ArrowIcon({ className }: IconProps) {
   );
 }
 
+export function TriangleIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 11 14" fill="none" aria-hidden="true">
+      <path d="M1.5 1.8v10.4L9.4 7 1.5 1.8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function TickIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 20 20" aria-hidden="true">

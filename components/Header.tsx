@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { nav } from '../content/homepage';
@@ -11,6 +12,7 @@ import styles from './Header.module.css';
 // The hero watermark in Opening carries this id. The pinned bar shows once it
 // has scrolled up out of view.
 const WATERMARK_ID = 'hero-watermark';
+const DESKTOP_QUERY = '(min-width: 1024px)';
 
 function MenuToggle({
   open,
@@ -39,13 +41,52 @@ function MenuToggle({
   );
 }
 
+// The navigation items, shared by the header menu and the desktop pinned bar.
+// Routes mark the current page with aria-current. The active colour from the
+// About comp is not applied to Home, because the homepage comp shows no
+// active state there.
+function NavItems({ pathname, onNavigate }: { pathname: string; onNavigate?: () => void }) {
+  return (
+    <>
+      {nav.map((item) => {
+        if (!('href' in item)) {
+          return (
+            <li key={item.label}>
+              <ServicesNavButton
+                className={`${styles.menuLink} ${styles.menuButton}`}
+                label={item.label}
+                onOpen={onNavigate}
+              />
+            </li>
+          );
+        }
+        const current = item.href === pathname;
+        return (
+          <li key={item.label}>
+            <Link
+              className={`${styles.menuLink} ${current && item.href !== '/' ? styles.menuLinkCurrent : ''}`}
+              href={item.href}
+              aria-current={current ? 'page' : undefined}
+              onClick={onNavigate}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
+    </>
+  );
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
+  const [desktop, setDesktop] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
   const staticBarRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const toggle = () => setOpen((v) => !v);
+  const close = () => setOpen(false);
 
   useEffect(() => {
     document.body.classList.toggle('isLocked', open);
@@ -60,6 +101,17 @@ export default function Header() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
+
+  // The bar is a different height either side of the desktop breakpoint, and
+  // the observer's inset is read from it, so crossing the breakpoint rebuilds
+  // the observer below.
+  useEffect(() => {
+    const query = window.matchMedia(DESKTOP_QUERY);
+    const update = () => setDesktop(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
 
   // The header lives in the root layout and persists across client side
   // navigation, so the observer is rebuilt on every route change. A page with
@@ -81,19 +133,21 @@ export default function Header() {
     );
     observer.observe(watermark);
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, desktop]);
 
   return (
     <header className={styles.header} id="top">
-      {/* Mobile only: sits above the viewport and slides down once the hero
-          watermark scrolls away. Inert while hidden so it cannot take focus. */}
+      {/* Sits above the viewport and slides down once the hero watermark
+          scrolls away. Mobile carries the wordmark and hamburger, desktop the
+          wordmark and the full navigation row. Inert while hidden so it cannot
+          take focus. */}
       <div
         ref={barRef}
         className={`${styles.pinned} ${pinned ? styles.pinnedOn : ''}`}
         inert={!pinned}
         aria-hidden={!pinned}
       >
-        <a className={styles.pinnedLogoLink} href="#top" aria-label="The Provision Pathway, home">
+        <Link className={styles.pinnedLogoLink} href="/" aria-label="The Provision Pathway, home">
           <img
             className={styles.pinnedLogo}
             src="/assets/TPP-header-logo.svg"
@@ -101,15 +155,20 @@ export default function Header() {
             width={720}
             height={169}
           />
-        </a>
+        </Link>
         <MenuToggle open={open} onToggle={toggle} className={styles.pinnedToggle} />
+        <nav className={styles.pinnedNav} aria-label="Primary, pinned">
+          <ul className={styles.menuList}>
+            <NavItems pathname={pathname} />
+          </ul>
+        </nav>
       </div>
 
       <div className={styles.bar} ref={staticBarRef}>
-        <a className={styles.logoLink} href="#top" aria-label="The Provision Pathway, home">
+        <Link className={styles.logoLink} href="/" aria-label="The Provision Pathway, home">
           {/* Desktop swaps to the one-line wordmark, which carries its own black field. */}
           <picture>
-            <source media="(min-width: 1024px)" srcSet="/assets/TPP-header-logo.svg" />
+            <source media={DESKTOP_QUERY} srcSet="/assets/TPP-header-logo.svg" />
             <img
               className={styles.logo}
               src="/assets/logo-green.svg"
@@ -118,14 +177,18 @@ export default function Header() {
               height={64}
             />
           </picture>
-        </a>
+        </Link>
 
         <MenuToggle open={open} onToggle={toggle} className="" />
       </div>
 
-      <div className={styles.ctaRow}>
-        <BookButton className={styles.cta} />
-      </div>
+      {/* The booking button sits in the top right corner of the homepage hero.
+          Other pages have no hero there, so it is not rendered on them. */}
+      {pathname === '/' && (
+        <div className={styles.ctaRow}>
+          <BookButton size="large" />
+        </div>
+      )}
 
       <nav
         id="primary-menu"
@@ -133,21 +196,7 @@ export default function Header() {
         aria-label="Primary"
       >
         <ul className={styles.menuList}>
-          {nav.map((item) => (
-            <li key={item.label}>
-              {'href' in item ? (
-                <a className={styles.menuLink} href={item.href} onClick={() => setOpen(false)}>
-                  {item.label}
-                </a>
-              ) : (
-                <ServicesNavButton
-                  className={`${styles.menuLink} ${styles.menuButton}`}
-                  label={item.label}
-                  onOpen={() => setOpen(false)}
-                />
-              )}
-            </li>
-          ))}
+          <NavItems pathname={pathname} onNavigate={close} />
         </ul>
       </nav>
     </header>

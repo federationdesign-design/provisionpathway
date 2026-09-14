@@ -131,8 +131,14 @@
   appearance: none;
 }
 
-/* Mobile pinned bar. Parked above the viewport until the hero watermark has
-   scrolled away, then slides down. Opaque, so content never shows through. */
+/* The navigation item for the page being viewed. */
+.menuLinkCurrent {
+  color: var(--brand);
+}
+
+/* Pinned bar. Parked above the viewport until the hero watermark has scrolled
+   away, then slides down. Opaque, so content never shows through. Mobile
+   carries the hamburger; desktop swaps it for the navigation row below. */
 .pinned {
   position: fixed;
   top: 0;
@@ -145,7 +151,9 @@
   height: var(--pinned-bar-h);
   padding-right: var(--gutter);
   background: var(--black);
-  transform: translateY(-100%);
+  /* One pixel beyond its own height, so a fractional bar height never leaves
+     a sliver of black along the top edge of the page. */
+  transform: translateY(calc(-100% - 1px));
   transition: transform 220ms ease;
 }
 
@@ -171,6 +179,10 @@
 
 .pinnedToggle .bars span {
   background: var(--paper);
+}
+
+.pinnedNav {
+  display: none;
 }
 
 /* Under prefers-reduced-motion the global rule in globals.css collapses this
@@ -217,9 +229,23 @@
     height: auto;
   }
 
-  .toggle,
-  .pinned {
+  .toggle {
     display: none;
+  }
+
+  /* Pinned bar: wordmark at the left edge of the content, the navigation row
+     on the right, both centred in a bar the height of the header row. */
+  .pinned {
+    padding: 0 2.2vw 0 var(--gutter);
+  }
+
+  .pinnedNav {
+    display: block;
+    color: var(--paper);
+  }
+
+  .pinnedNav .menuList {
+    padding-top: 0;
   }
 
   .ctaRow {
@@ -227,12 +253,6 @@
     top: 6.7vw;
     right: 3.5vw;
     margin-top: 0;
-  }
-
-  .ctaRow .cta {
-    padding: 1.5vw 3.3vw;
-    border-width: 0.2vw;
-    font-size: var(--t-h3);
   }
 
   .menu {

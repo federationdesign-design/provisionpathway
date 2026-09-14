@@ -1,0 +1,55 @@
+.section {
+  padding: var(--stack-l) var(--gutter) 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.heading {
+  margin-top: var(--stack-m);
+  font-size: var(--t-h3);
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+.body {
+  max-width: 60ch;
+  margin-top: var(--stack-s);
+  font-size: var(--t-body);
+  line-height: 1.3;
+}
+
+/* Paragraphs are separated by one blank line. */
+.body + .body {
+  margin-top: 1.3em;
+}
+
+/* Desktop: image left, text right. Measurements come from the 2000px About
+   comp, divided by 20. The heading's first line and the image top align. */
+@media (min-width: 1024px) {
+  .section {
+    display: grid;
+    grid-template-columns: 45vw 44.5vw;
+    column-gap: 2.4vw;
+    align-items: start;
+    padding: 3.775vw 0 0 2.45vw;
+  }
+
+  .image {
+    margin-top: 0.425vw;
+  }
+
+  .heading {
+    margin-top: 0;
+    font-size: var(--t-h1);
+    line-height: 1.13;
+  }
+
+  .body {
+    max-width: none;
+    margin-top: 1.45vw;
+    font-size: var(--t-h3);
+  }
+}

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import { footer, nav } from '../content/homepage';
 import ServicesNavButton from './ServicesNavButton';
 import styles from './Footer.module.css';
@@ -11,9 +12,9 @@ export default function Footer() {
           {nav.map((item) => (
             <li key={item.label}>
               {'href' in item ? (
-                <a className={styles.navLink} href={item.href}>
+                <Link className={styles.navLink} href={item.href}>
                   {item.label}
-                </a>
+                </Link>
               ) : (
                 <ServicesNavButton
                   className={`${styles.navLink} ${styles.navButton}`}

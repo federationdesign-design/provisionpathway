@@ -6,7 +6,7 @@ import { personas } from '../content/homepage';
 import BookButton from './BookButton';
 import styles from './Personas.module.css';
 
-export default function Personas({ className = '' }: { className?: string }) {
+export default function Personas() {
   const [index, setIndex] = useState(0);
   const startX = useRef<number | null>(null);
   const current = personas[index];
@@ -29,7 +29,7 @@ export default function Personas({ className = '' }: { className?: string }) {
 
   return (
     <section
-      className={`${styles.section} ${className}`}
+      className={styles.section}
       aria-roledescription="carousel"
       aria-label="Family situations we help with"
       onTouchStart={onTouchStart}

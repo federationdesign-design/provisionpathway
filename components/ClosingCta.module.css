@@ -1,0 +1,86 @@
+/* The artwork runs to the foot of the section and meets the footer, so the
+   section clips its lower edge and carries no bottom padding. */
+.section {
+  position: relative;
+  padding: var(--stack-xl) var(--gutter) 0;
+  overflow: clip;
+}
+
+.headline {
+  max-width: 22ch;
+  font-size: var(--t-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.cta {
+  margin-top: var(--stack-m);
+}
+
+/* Mobile: the artwork follows the button at full content width, with the
+   logo in its clear lower right corner, as the homepage opening sets its own. */
+.art {
+  position: relative;
+  margin-top: var(--stack-l);
+  aspect-ratio: 3386 / 2968;
+}
+
+.path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.watermark {
+  position: absolute;
+  right: 0;
+  bottom: 4%;
+  width: clamp(96px, 30vw, 190px);
+  height: auto;
+}
+
+/* Desktop: headline and button on the left, the artwork positioned against
+   the section so it rises behind the right hand side and meets the footer.
+   Measurements come from the 2000px About comp, divided by 20. */
+@media (min-width: 1024px) {
+  .section {
+    padding: 4.15vw 0 28.55vw 2.45vw;
+  }
+
+  .headline {
+    position: relative;
+    z-index: 1;
+    max-width: 62vw;
+    line-height: 1.38;
+  }
+
+  .cta {
+    position: relative;
+    z-index: 1;
+    margin-top: 2.6vw;
+  }
+
+  .art {
+    position: static;
+    margin-top: 0;
+    aspect-ratio: auto;
+  }
+
+  .path {
+    inset: auto;
+    left: 32.9vw;
+    bottom: -1.2vw;
+    width: 54.85vw;
+    height: auto;
+  }
+
+  .watermark {
+    right: auto;
+    left: 6.1vw;
+    bottom: 5.3vw;
+    width: 16.2vw;
+  }
+}

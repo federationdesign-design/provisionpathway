@@ -17,6 +17,7 @@
   /* Liquid type scale. Everything grows with the viewport rather than
      stepping at breakpoints, matching the house pattern. */
   --t-hero: clamp(28px, 7.4vw, 64px);
+  --t-display: var(--t-h2);
   --t-h1: var(--t-h2);
   --t-h2: clamp(28px, 7.2vw, 52px);
   --t-quote: var(--t-body);
@@ -40,11 +41,9 @@
   --pinned-bar-h: clamp(48px, 13.3vw, 64px);
 }
 
-/* Mobile: anchor jumps stop below the pinned bar rather than under it. */
-@media not all and (min-width: 1024px) {
-  html {
-    scroll-padding-top: var(--pinned-bar-h);
-  }
+/* Anchor jumps stop below the pinned bar rather than under it. */
+html {
+  scroll-padding-top: var(--pinned-bar-h);
 }
 
 /* Desktop. The same tokens, re-derived from the 2000px desktop comp: a value
@@ -54,6 +53,7 @@
 @media (min-width: 1024px) {
   :root {
     --t-hero: clamp(40px, 4.025vw, 114px);
+    --t-display: clamp(30px, 2.95vw, 83px);
     --t-h1: clamp(28px, 2.75vw, 78px);
     --t-h2: clamp(24px, 2.35vw, 67px);
     --t-quote: clamp(21px, 2.05vw, 58px);
@@ -62,6 +62,8 @@
     --t-body: clamp(14px, 1.3vw, 37px);
     --t-small: clamp(13px, 1.15vw, 33px);
     --t-micro: clamp(12px, 1vw, 29px);
+
+    --pinned-bar-h: 4.55vw;
 
     --gutter: 4.4vw;
     --stack-s: 0.75vw;

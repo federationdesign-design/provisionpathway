@@ -53,4 +53,9 @@
     border-width: 0.2vw;
     font-size: var(--t-lead);
   }
+
+  .large {
+    padding: 1.5vw 3.3vw;
+    font-size: var(--t-h3);
+  }
 }

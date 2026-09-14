@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { services } from '../content/homepage';
+import { servicesPopup } from '../content/homepage';
 import { TickIcon } from './Icons';
 import BookButton from './BookButton';
 import styles from './AssessmentModal.module.css';
 
 // The services popup. One instance, rendered by AssessmentModalProvider and
 // opened from the Pathway nav item and the About the assessment button. All
-// copy comes from `services` in the content layer.
+// copy comes from `servicesPopup` in the content layer. The services stack on
+// mobile and sit side by side from the desktop breakpoint.
 export default function AssessmentModal({
   open,
   onClose,
@@ -57,6 +58,7 @@ export default function AssessmentModal({
 
   if (!open) return null;
 
+  const titleId = 'services-popup-title';
   const headingId = (id: string) => `service-${id}-title`;
 
   return (
@@ -66,7 +68,7 @@ export default function AssessmentModal({
         className={styles.panel}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={services.map((service) => headingId(service.id)).join(' ')}
+        aria-labelledby={titleId}
         onClick={(e) => e.stopPropagation()}
       >
         <button ref={closeRef} type="button" className={styles.close} onClick={onClose}>
@@ -74,47 +76,53 @@ export default function AssessmentModal({
           <span aria-hidden="true">&times;</span>
         </button>
 
-        {services.map((service) => {
-          const List = service.list.ordered ? 'ol' : 'ul';
-          return (
-            <section
-              className={styles.service}
-              key={service.id}
-              aria-labelledby={headingId(service.id)}
-            >
-              <h2 className={styles.title} id={headingId(service.id)}>
-                {service.name}
-              </h2>
+        <h2 className={styles.title} id={titleId}>
+          {servicesPopup.title}
+        </h2>
 
-              {service.facts.map((fact) => (
-                <p className={styles.block} key={fact.label}>
-                  <strong className={styles.label}>{fact.label}</strong> {fact.body}
-                </p>
-              ))}
+        <div className={styles.services}>
+          {servicesPopup.services.map((service) => {
+            const List = service.list.ordered ? 'ol' : 'ul';
+            return (
+              <section
+                className={styles.service}
+                key={service.id}
+                aria-labelledby={headingId(service.id)}
+              >
+                <h3 className={styles.serviceTitle} id={headingId(service.id)}>
+                  {service.name}
+                </h3>
 
-              <div className={styles.block}>
-                <strong className={styles.label}>{service.list.label}</strong>
-                <List className={styles.ticks}>
-                  {service.list.items.map((item, i) => (
-                    <li className={styles.tickItem} key={item}>
-                      {service.list.ordered ? (
-                        <span className={styles.stepNumber} aria-hidden="true">
-                          {i + 1}
-                        </span>
-                      ) : (
-                        <TickIcon className={styles.tick} />
-                      )}
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </List>
-              </div>
-            </section>
-          );
-        })}
+                {service.facts.map((fact) => (
+                  <p className={styles.block} key={fact.label}>
+                    <strong className={styles.label}>{fact.label}</strong> {fact.body}
+                  </p>
+                ))}
+
+                <div className={styles.block}>
+                  <strong className={styles.label}>{service.list.label}</strong>
+                  <List className={styles.ticks}>
+                    {service.list.items.map((item, i) => (
+                      <li className={styles.tickItem} key={item}>
+                        {service.list.ordered ? (
+                          <span className={styles.stepNumber} aria-hidden="true">
+                            {i + 1}
+                          </span>
+                        ) : (
+                          <TickIcon className={styles.tick} />
+                        )}
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </List>
+                </div>
+              </section>
+            );
+          })}
+        </div>
 
         <div className={styles.cta}>
-          <BookButton />
+          <BookButton className={styles.ctaButton} />
         </div>
       </div>
     </div>

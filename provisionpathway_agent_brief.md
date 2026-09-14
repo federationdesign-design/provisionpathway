@@ -105,7 +105,14 @@ If the script fails to load, the button must fall back to opening the scheduling
 
 ## 7. Task 2: Desktop layout
 
-**Reference.** The desktop comp is the supplied Photoshop export. Build to it.
+**Reference.** Both comps are committed to the repository:
+
+    reference/homepage_desktop_comp.jpg    2000 x 5011
+    reference/homepage_mobile_comp.jpg     700 x 7307
+
+Build the desktop layout to `homepage_desktop_comp.jpg`. The mobile comp is there so you can confirm the existing mobile view has not regressed.
+
+Scale before measuring. The desktop comp is a 2000px wide export, so a value read off it maps to a CSS pixel at 2000px viewport width by dividing by one. The mobile comp is a 700px wide export, so multiply by 390/700 to get the equivalent at a 390px viewport. Measure positions and spacing off the file rather than estimating them by eye.
 
 **Approach.** The mobile build is the base. Add desktop behaviour on top of it. Do not fork the components into separate mobile and desktop trees.
 

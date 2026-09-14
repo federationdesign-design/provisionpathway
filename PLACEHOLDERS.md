@@ -5,13 +5,6 @@ input has not been supplied. Nothing here has been invented.
 
 ## Assets
 
-**HEADER_WORDMARK_WHITE_HORIZONTAL**
-The desktop comp puts a white, single line "The Provision Pathway" wordmark
-with the flag mark inside the black logo block. No horizontal lockup has been
-supplied. The block currently shows `public/assets/logo-footer-white.svg`, the
-stacked white logo, swapped in by a `<picture>` source in
-`components/Header.tsx`.
-
 **GOAL_BAND_WATERMARK_TWO_TONE**
 The desktop comp's watermark in the green band is two tone: white "the" and
 "Pathway", light grey "Provision" and flag. No such variant has been supplied.
@@ -29,11 +22,6 @@ been supplied, so it is not rendered.
 `https://calendly.com/PLACEHOLDER/consultation`. Task 1.
 
 ## Copy
-
-**PERSONAS_BEYOND_SARAH**
-The comp shows three carousel dots. Only Sarah has been written. Dots appear
-automatically once further entries are added to `personas` in
-`content/homepage.ts`.
 
 **COOKIES_AND_PRIVACY_POLICY**
 The footer links to `#cookies` and `#privacy`. No policy content has been

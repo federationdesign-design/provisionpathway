@@ -37,6 +37,9 @@ All supplied brand assets are installed and in use:
 
     public/assets/logo-green.svg
     public/assets/logo-footer-white.svg
+    public/assets/TPP-header-logo.svg
+    public/assets/meetclair.jpg
+    public/assets/meetjames.jpg
     public/assets/path-illustration_green.svg
     public/assets/meet-sarah-img.png
     public/assets/boy-profile.jpg
@@ -75,10 +78,6 @@ The assessment lightbox is not in the Photoshop comp. It is built as
 `AssessmentModal`, triggered by `AssessmentCta` in the header, and currently
 reuses the pricing, location, inclusions and format copy that also appears
 inline further down the page.
-
-The persona carousel shows three dots in the comp. Only Sarah has been
-written. Add entries to the `personas` array in `content/homepage.ts` and the
-dots appear automatically.
 
 Two em dashes in the comp copy have been set as commas to match house style.
 

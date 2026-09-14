@@ -27,9 +27,9 @@ export default function Header() {
     <header className={styles.header} id="top">
       <div className={styles.bar}>
         <a className={styles.logoLink} href="#top" aria-label="The Provision Pathway, home">
-          {/* Desktop sets the logo on a black field, so it swaps to the white artwork. */}
+          {/* Desktop swaps to the one-line wordmark, which carries its own black field. */}
           <picture>
-            <source media="(min-width: 1024px)" srcSet="/assets/logo-footer-white.svg" />
+            <source media="(min-width: 1024px)" srcSet="/assets/TPP-header-logo.svg" />
             <img
               className={styles.logo}
               src="/assets/logo-green.svg"

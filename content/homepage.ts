@@ -26,8 +26,8 @@ export const hero = {
   headline: 'Move forward with greater clarity & confidence',
 };
 
-// The comp shows three carousel dots. Only Sarah has been written so far.
-// Add further entries here and the dots appear automatically.
+// Carousel entries. One dot is shown per entry, so adding or removing an
+// entry here updates the carousel automatically.
 export const personas = [
   {
     id: 'sarah',
@@ -36,6 +36,22 @@ export const personas = [
       'Sarah has spent years fighting for support. Ben\u2019s post-16 provision has broken down and he\u2019s now at home, disengaged. She knows the system, but no longer trusts it. She will only engage with someone who listens quickly and offers a credible next step.',
     image: '/assets/meet-sarah-img.png',
     imageAlt: 'A parent waiting outside a consultation room with her son',
+  },
+  {
+    id: 'claire',
+    name: 'Meet Claire:',
+    body:
+      'Claire has heard a different explanation from every professional. School, CAMHS, GP and private specialists all seem to see a different version of Ava. Ava is at home and declining. Claire is overloaded, guilty and desperate for one clear picture of what is happening.',
+    image: '/assets/meetclair.jpg',
+    imageAlt: 'A parent sitting alone at a kitchen counter with a cup of tea',
+  },
+  {
+    id: 'james',
+    name: 'Meet James:',
+    body:
+      'James is practical and action-focused. He accepts that Leo needs help and wants options, timelines and a defined next step. He has researched widely and is ready to pay for support, but he has little patience for vague advice or long waiting lists.',
+    image: '/assets/meetjames.jpg',
+    imageAlt: 'A parent at a table reading paperwork, head in hand',
   },
 ];
 

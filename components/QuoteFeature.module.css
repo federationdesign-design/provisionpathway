@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: var(--stack-l);
-  min-height: clamp(360px, 96vw, 620px);
+  /* 877px tall on the 700px mobile comp: 877 / 700 = 125.3vw. */
+  min-height: clamp(470px, 125.3vw, 809px);
   padding: clamp(18px, 5vw, 36px) var(--gutter) clamp(26px, 7vw, 48px);
   overflow: hidden;
 }

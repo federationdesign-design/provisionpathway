@@ -117,6 +117,69 @@
   color: var(--brand);
 }
 
+/* Mobile pinned bar. Parked above the viewport until the hero watermark has
+   scrolled away, then slides down. Opaque, so content never shows through. */
+.pinned {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--pinned-bar-h);
+  padding-right: var(--gutter);
+  background: var(--black);
+  transform: translateY(-100%);
+  transition: transform 220ms ease;
+}
+
+.pinnedOn {
+  transform: translateY(0);
+}
+
+/* The wordmark's own black field matches the bar, and its lettering starts
+   about a gutter in from its left edge, so it sits flush to the screen edge. */
+.pinnedLogoLink {
+  display: block;
+  height: 100%;
+}
+
+.pinnedLogo {
+  width: auto;
+  height: 100%;
+}
+
+.pinnedToggle {
+  margin-top: 0;
+}
+
+.pinnedToggle .bars span {
+  background: var(--paper);
+}
+
+/* Under prefers-reduced-motion the global rule in globals.css collapses this
+   transition, so the bar appears in place without sliding. */
+
+/* While the bar is pinned, the one menu drops from beneath it instead of
+   opening in the header at the top of the page. */
+@media not all and (min-width: 1024px) {
+  .menuPinned {
+    position: fixed;
+    top: var(--pinned-bar-h);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding-inline: var(--gutter);
+    background: var(--page-bg);
+  }
+
+  .menuPinned.menuOpen .menuList {
+    padding-bottom: var(--stack-s);
+  }
+}
+
 /* Desktop: the logo sits on a black field at the left, the navigation runs
    along the top of the page, and the booking button moves to the top right
    of the hero. Measurements come from the 2000px comp, divided by 20. */
@@ -140,7 +203,8 @@
     height: auto;
   }
 
-  .toggle {
+  .toggle,
+  .pinned {
     display: none;
   }
 

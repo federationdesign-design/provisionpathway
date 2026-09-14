@@ -35,6 +35,16 @@
 
   --radius-pill: 999px;
   --radius-card: 14px;
+
+  /* Height of the mobile bar that pins once the hero has scrolled away. */
+  --pinned-bar-h: clamp(48px, 13.3vw, 64px);
+}
+
+/* Mobile: anchor jumps stop below the pinned bar rather than under it. */
+@media not all and (min-width: 1024px) {
+  html {
+    scroll-padding-top: var(--pinned-bar-h);
+  }
 }
 
 /* Desktop. The same tokens, re-derived from the 2000px desktop comp: a value

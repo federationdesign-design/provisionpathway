@@ -71,9 +71,10 @@
   color: var(--brand-secondary);
 }
 
+/* No z-index here: it already paints above .post by document order, and a
+   stacking context would trap the lightbox inside it beneath the header. */
 .detail {
   position: relative;
-  z-index: 1;
   margin-top: var(--stack-m);
   padding-left: clamp(34px, 11vw, 64px);
 }

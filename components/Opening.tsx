@@ -23,7 +23,9 @@ export default function Opening() {
             width={3386}
             height={2968}
           />
+          {/* Header watches this id to decide when the mobile pinned bar shows. */}
           <img
+            id="hero-watermark"
             className={styles.watermark}
             src="/assets/logo-green.svg"
             alt=""

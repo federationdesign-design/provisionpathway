@@ -27,6 +27,40 @@ been supplied, so it is not rendered.
 The footer links to `#cookies` and `#privacy`. No policy content has been
 supplied. Task 3.
 
+**SERVICES_ASSESSMENT_DELIVERY_CONTRADICTION**
+In the services popup copy (`services` in `content/homepage.ts`), the Pathway
+Assessment Location line says the assessment "is delivered in person or
+virtually (dependant on personal circumstances)", while its first inclusion
+says "The assessment itself, delivered in person". Both are entered exactly as
+supplied. The studio to decide which is correct.
+
+**SERVICES_POPUP_TITLE**
+The popup has no overall heading, as none was supplied. It opens straight
+onto the two service headings, which together give the dialog its accessible
+name. The previous title, "About the assessment", was removed with the old
+content because it no longer describes both services.
+
+## Copy conflicts to raise
+
+**HOMEPAGE_ASSESSMENT_DETAIL_VS_POPUP**
+The inline assessment block on the homepage (`details`, rendered by
+`AssessmentDetail`) has not been edited, per the pages brief, and now disagrees
+with the popup:
+
+1. **Location.** Homepage: "delivered in person". Popup: "in person or
+   virtually (dependant on personal circumstances)".
+2. **What's included.** Homepage lists four items, including "Not just verbal
+   advice." as a separate line. Popup lists three, folds "not just verbal
+   advice" into the action plan line, and adds the assessment itself.
+3. **Debrief.** Both give the same length. The homepage Format line says the
+   debrief is remote as standard, "In-person only if a family specifically
+   needs it". The popup says "The debrief afterwards is remote", with no in
+   person option, and adds that it is "delivered within 1 to 2 weeks of the
+   report being sent".
+4. **Purpose.** Present in the popup only.
+
+Pricing agrees.
+
 ## Desktop comp differences awaiting a decision
 
 These were found while building Task 2. The build follows the rule noted in

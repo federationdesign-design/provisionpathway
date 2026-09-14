@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { nav } from '../content/homepage';
 import BookButton from './BookButton';
+import ServicesNavButton from './ServicesNavButton';
 import styles from './Header.module.css';
 
 // The hero watermark in Opening carries this id. The pinned bar shows once it
@@ -134,9 +135,17 @@ export default function Header() {
         <ul className={styles.menuList}>
           {nav.map((item) => (
             <li key={item.label}>
-              <a className={styles.menuLink} href={item.href} onClick={() => setOpen(false)}>
-                {item.label}
-              </a>
+              {'href' in item ? (
+                <a className={styles.menuLink} href={item.href} onClick={() => setOpen(false)}>
+                  {item.label}
+                </a>
+              ) : (
+                <ServicesNavButton
+                  className={`${styles.menuLink} ${styles.menuButton}`}
+                  label={item.label}
+                  onOpen={() => setOpen(false)}
+                />
+              )}
             </li>
           ))}
         </ul>

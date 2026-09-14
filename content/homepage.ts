@@ -7,11 +7,13 @@ export const site = {
   gaMeasurementId: 'G-MMW4789DRX',
 };
 
-export const nav = [
+// A nav item either links somewhere or opens the services popup.
+export type NavItem = { label: string; href: string } | { label: string; opens: 'services' };
+
+export const nav: NavItem[] = [
   { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
-  { label: 'Pathway', href: '#pathway' },
-  { label: 'Resources', href: '#resources' },
+  { label: 'Pathway', opens: 'services' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -133,6 +135,63 @@ export const details = {
     body: 'The debrief is delivered remotely via video call as standard. In-person only if a family specifically needs it',
   },
 };
+
+// The services popup, opened from the Pathway nav item and the About the
+// assessment button. Entered exactly as supplied. The assessment Location line
+// and its first inclusion disagree on in person versus virtual delivery; this
+// is logged in PLACEHOLDERS.md for the studio, not resolved here.
+export const services = [
+  {
+    id: 'assessment',
+    name: 'Pathway Assessment',
+    facts: [
+      {
+        label: 'Purpose:',
+        body: 'An independent, structured assessment of a child\u2019s needs, strengths, and learning style. Written up as a clear report the family can actually use, with a follow-up debrief included as standard.',
+      },
+      {
+        label: 'Pricing:',
+        body: '\u00a3300 (the debrief is included in this price, not an extra cost)',
+      },
+      {
+        label: 'Location:',
+        body: 'The assessment itself is delivered in person or virtually (dependant on personal circumstances), for families in the Warwickshire area. The debrief afterwards is remote.',
+      },
+    ],
+    list: {
+      label: 'What\u2019s included',
+      ordered: false,
+      items: [
+        'The assessment itself, delivered in person, and the written report.',
+        'A report debrief session (30 to 45 minutes), delivered within 1 to 2 weeks of the report being sent.',
+        'A one-page written action plan with clear next steps, not just verbal advice.',
+      ],
+    },
+  },
+  {
+    id: 'coaching',
+    name: 'Post-16 / Year 11 Destination Coaching',
+    facts: [
+      {
+        label: 'Purpose:',
+        body: 'Supporting Post 16 students, particularly those who are NEET or at risk of becoming NEET, to explore their options and plan a realistic next step in education, training, or work.',
+      },
+      {
+        label: 'Pricing:',
+        body: '2-session package \u00a3220 (each session is 60 minutes)',
+      },
+    ],
+    list: {
+      label: 'Session structure',
+      ordered: true,
+      items: [
+        'Explore: understand the young person\u2019s interests, strengths, and options.',
+        'Map: lay out realistic pathways, further education, training, apprenticeships, or work.',
+        'Apply: practical support with applications and next steps.',
+      ],
+    },
+  },
+];
 
 export const obstacles = {
   headline: 'The biggest obstacles are often not a lack of effort, but a system that can feel fragmented, slow and difficult to navigate.',

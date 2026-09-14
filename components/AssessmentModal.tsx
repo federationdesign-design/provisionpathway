@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { details, promise, cta } from '../content/homepage';
+import { services } from '../content/homepage';
 import { TickIcon } from './Icons';
 import BookButton from './BookButton';
 import styles from './AssessmentModal.module.css';
 
+// The services popup. One instance, rendered by AssessmentModalProvider and
+// opened from the Pathway nav item and the About the assessment button. All
+// copy comes from `services` in the content layer.
 export default function AssessmentModal({
   open,
   onClose,
@@ -54,6 +57,8 @@ export default function AssessmentModal({
 
   if (!open) return null;
 
+  const headingId = (id: string) => `service-${id}-title`;
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
@@ -61,7 +66,7 @@ export default function AssessmentModal({
         className={styles.panel}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="assessment-modal-title"
+        aria-labelledby={services.map((service) => headingId(service.id)).join(' ')}
         onClick={(e) => e.stopPropagation()}
       >
         <button ref={closeRef} type="button" className={styles.close} onClick={onClose}>
@@ -69,40 +74,44 @@ export default function AssessmentModal({
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <h2 className={styles.title} id="assessment-modal-title">
-          {cta.assessment}
-        </h2>
+        {services.map((service) => {
+          const List = service.list.ordered ? 'ol' : 'ul';
+          return (
+            <section
+              className={styles.service}
+              key={service.id}
+              aria-labelledby={headingId(service.id)}
+            >
+              <h2 className={styles.title} id={headingId(service.id)}>
+                {service.name}
+              </h2>
 
-        <p className={styles.lead}>{promise.body}</p>
+              {service.facts.map((fact) => (
+                <p className={styles.block} key={fact.label}>
+                  <strong className={styles.label}>{fact.label}</strong> {fact.body}
+                </p>
+              ))}
 
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.price.label}</strong>
-          <br />
-          {details.price.body}
-        </p>
-
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.location.label}</strong>{' '}
-          {details.location.body}
-        </p>
-
-        <div className={styles.block}>
-          <strong className={styles.label}>{details.included.label}</strong>
-          <ul className={styles.ticks}>
-            {details.included.items.map((item) => (
-              <li className={styles.tickItem} key={item}>
-                <TickIcon className={styles.tick} />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <p className={styles.block}>
-          <strong className={styles.label}>{details.format.label}</strong>
-          <br />
-          {details.format.body}
-        </p>
+              <div className={styles.block}>
+                <strong className={styles.label}>{service.list.label}</strong>
+                <List className={styles.ticks}>
+                  {service.list.items.map((item, i) => (
+                    <li className={styles.tickItem} key={item}>
+                      {service.list.ordered ? (
+                        <span className={styles.stepNumber} aria-hidden="true">
+                          {i + 1}
+                        </span>
+                      ) : (
+                        <TickIcon className={styles.tick} />
+                      )}
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </List>
+              </div>
+            </section>
+          );
+        })}
 
         <div className={styles.cta}>
           <BookButton />

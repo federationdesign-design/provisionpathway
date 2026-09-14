@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { footer, nav } from '../content/homepage';
+import ServicesNavButton from './ServicesNavButton';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -9,9 +10,16 @@ export default function Footer() {
         <ul className={styles.navList}>
           {nav.map((item) => (
             <li key={item.label}>
-              <a className={styles.navLink} href={item.href}>
-                {item.label}
-              </a>
+              {'href' in item ? (
+                <a className={styles.navLink} href={item.href}>
+                  {item.label}
+                </a>
+              ) : (
+                <ServicesNavButton
+                  className={`${styles.navLink} ${styles.navButton}`}
+                  label={item.label}
+                />
+              )}
             </li>
           ))}
         </ul>

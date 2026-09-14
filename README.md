@@ -74,10 +74,13 @@ documented in `components/ProcessLayout.module.css`.
 
 ## Open decisions
 
-The assessment lightbox is not in the Photoshop comp. It is built as
-`AssessmentModal`, triggered by `AssessmentCta` in the header, and currently
-reuses the pricing, location, inclusions and format copy that also appears
-inline further down the page.
+The services popup is not in the Photoshop comp. It is `AssessmentModal`,
+rendered once by `AssessmentModalProvider` in the root layout and opened from
+the `Pathway` navigation item (`ServicesNavButton`, in the header and footer)
+and the `About the assessment` button (`AssessmentCta`). It holds both
+services from `services` in `content/homepage.ts`. The inline homepage
+assessment block is unchanged and now disagrees with the popup; see
+`PLACEHOLDERS.md`.
 
 Two em dashes in the comp copy have been set as commas to match house style.
 

@@ -117,6 +117,20 @@
   color: var(--brand);
 }
 
+/* The Pathway item is a button. Strip the browser's button styling so it
+   renders exactly as the links around it. */
+.menuButton {
+  width: 100%;
+  margin: 0;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  text-align: left;
+  appearance: none;
+}
+
 /* Mobile pinned bar. Parked above the viewport until the hero watermark has
    scrolled away, then slides down. Opaque, so content never shows through. */
 .pinned {
@@ -254,5 +268,9 @@
 
   .menuList li:last-child .menuLink {
     padding-right: 0;
+  }
+
+  .menuButton {
+    width: auto;
   }
 }

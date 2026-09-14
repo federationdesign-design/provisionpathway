@@ -46,6 +46,14 @@
   white-space: nowrap;
 }
 
+/* Each service is its own section, divided by a hairline rule. */
+.service + .service {
+  margin-top: var(--stack-l);
+  padding-top: var(--stack-l);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* The first title stops short of the close button in the corner. */
 .title {
   max-width: 14ch;
   font-size: var(--t-h3);
@@ -53,11 +61,8 @@
   letter-spacing: -0.02em;
 }
 
-.lead {
-  max-width: 52ch;
-  margin-top: var(--stack-s);
-  font-size: var(--t-small);
-  line-height: 1.3;
+.service + .service .title {
+  max-width: 22ch;
 }
 
 .block {
@@ -94,6 +99,25 @@
   color: var(--tick);
 }
 
+/* Numbered marker for ordered lists, sized and coloured to sit with the ticks. */
+.stepNumber {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(15px, 4vw, 20px);
+  height: clamp(15px, 4vw, 20px);
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--tick);
+  color: var(--paper);
+  /* Scales with the marker rather than the type scale, so it fits the circle
+     at every width. */
+  font-size: clamp(10px, 2.6vw, 13px);
+  font-weight: 700;
+  line-height: 1;
+}
+
 .cta {
-  margin-top: var(--stack-m);
+  margin-top: var(--stack-l);
 }

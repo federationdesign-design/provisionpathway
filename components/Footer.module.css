@@ -21,6 +21,17 @@
   color: var(--button-stroke);
 }
 
+/* The Pathway item is a button. Strip the browser's button styling so it
+   renders exactly as the links around it. */
+.navButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  appearance: none;
+}
+
 .logo {
   width: clamp(110px, 34vw, 200px);
   height: auto;

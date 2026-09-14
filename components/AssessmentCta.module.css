@@ -1,0 +1,22 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: clamp(9px, 2.4vw, 14px) clamp(16px, 4.4vw, 30px);
+  background: var(--brand);
+  border: 1.5px solid var(--brand);
+  border-radius: var(--radius-pill);
+  color: var(--paper);
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-align: center;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.button:hover {
+  background: transparent;
+  color: var(--brand);
+}

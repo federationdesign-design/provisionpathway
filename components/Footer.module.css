@@ -1,0 +1,49 @@
+.footer {
+  background: var(--black);
+  color: var(--paper);
+  padding: var(--stack-l) var(--gutter) var(--stack-m);
+  text-align: center;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 28px);
+}
+
+.navLink {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.navLink:hover {
+  color: var(--button-stroke);
+}
+
+.logo {
+  width: clamp(110px, 34vw, 200px);
+  height: auto;
+  margin: var(--stack-m) auto 0;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(8px, 3vw, 20px);
+  margin-top: var(--stack-m);
+}
+
+.legalLink {
+  font-size: var(--t-micro);
+}
+
+.legalLink:hover {
+  color: var(--button-stroke);
+}
+
+.copyright {
+  margin-top: clamp(6px, 2vw, 12px);
+  font-size: var(--t-micro);
+}

@@ -1,0 +1,136 @@
+.section {
+  position: relative;
+  padding: var(--stack-l) var(--gutter) 0;
+}
+
+/* The vertical signpost pole sits behind the chips and runs on down the page. */
+.post {
+  position: absolute;
+  top: clamp(20px, 6vw, 40px);
+  bottom: 0;
+  left: calc(var(--gutter) + clamp(14px, 4vw, 26px));
+  width: clamp(7px, 1.9vw, 11px);
+  background: linear-gradient(90deg, #cfcfcf 0%, #eaeaea 55%, #c4c4c4 100%);
+  border-radius: 2px;
+}
+
+.signs {
+  position: relative;
+  z-index: 1;
+}
+
+.signItem + .signItem {
+  margin-top: clamp(10px, 3vw, 18px);
+}
+
+.sign {
+  width: min(100%, 340px);
+  padding: 1.6px;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%);
+}
+
+.signOn {
+  background: var(--brand);
+}
+
+.signOff {
+  background: var(--brand-secondary);
+}
+
+.signInner {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2.6vw, 14px);
+  padding: clamp(9px, 2.8vw, 15px) clamp(34px, 9vw, 52px) clamp(9px, 2.8vw, 15px)
+    clamp(12px, 3.4vw, 20px);
+  background: var(--page-bg);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%);
+}
+
+.signIcon {
+  flex: 0 0 auto;
+  width: clamp(20px, 5.6vw, 30px);
+  height: clamp(20px, 5.6vw, 30px);
+}
+
+.signOn .signIcon {
+  color: var(--brand);
+}
+
+.signOff .signIcon {
+  color: var(--brand-secondary);
+}
+
+.signLabel {
+  font-size: var(--t-small);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.signOff .signLabel {
+  color: var(--brand-secondary);
+}
+
+.detail {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--stack-m);
+  padding-left: clamp(34px, 11vw, 64px);
+}
+
+.block + .block {
+  margin-top: var(--stack-m);
+}
+
+.label {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.block {
+  max-width: 46ch;
+  font-size: var(--t-small);
+  line-height: 1.3;
+}
+
+.ticks {
+  margin-top: var(--stack-s);
+}
+
+.tickItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.tickItem + .tickItem {
+  margin-top: clamp(6px, 1.8vw, 10px);
+}
+
+.tick {
+  flex: 0 0 auto;
+  width: clamp(15px, 4vw, 20px);
+  height: clamp(15px, 4vw, 20px);
+  margin-top: 1px;
+  color: var(--tick);
+}
+
+.obstacleHeadline {
+  max-width: 30ch;
+  margin-top: var(--stack-l);
+  font-size: var(--t-body);
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.obstacleHeadline + .block {
+  margin-top: var(--stack-m);
+}
+
+.closingCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 2.4vw, 14px);
+  margin-top: var(--stack-m);
+  padding-bottom: var(--stack-xl);
+}

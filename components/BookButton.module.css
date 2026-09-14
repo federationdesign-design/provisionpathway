@@ -1,0 +1,48 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: clamp(9px, 2.4vw, 14px) clamp(18px, 5vw, 34px);
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--button-stroke);
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-align: center;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.light {
+  background: transparent;
+  color: var(--ink);
+}
+
+.light:hover {
+  background: var(--button-stroke);
+  color: var(--black);
+}
+
+.onDark {
+  background: transparent;
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.onDark:hover {
+  background: var(--paper);
+  color: var(--brand);
+}
+
+.onImage {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: var(--button-stroke);
+  color: var(--paper);
+  backdrop-filter: blur(4px);
+}
+
+.onImage:hover {
+  background: var(--button-stroke);
+  color: var(--black);
+}

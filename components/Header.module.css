@@ -1,0 +1,114 @@
+.header {
+  position: relative;
+  z-index: 40;
+  background: var(--page-bg);
+  padding: clamp(11px, 3.2vw, 22px) var(--gutter) 0;
+}
+
+.bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--stack-m);
+}
+
+.logoLink {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.logo {
+  width: clamp(96px, 27vw, 168px);
+  height: auto;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-top: 2px;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.toggleLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 17px;
+}
+
+.bars span {
+  display: block;
+  height: 2.5px;
+  background: var(--black);
+  border-radius: 2px;
+  transition: transform 180ms ease, opacity 140ms ease;
+}
+
+.barsOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.barsOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.barsOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Space below the logo row belongs to this row only, never to both. */
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(6px, 2vw, 12px);
+  margin-top: clamp(-48px, -10.8vw, -26px);
+}
+
+.menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 220ms ease;
+}
+
+.menuOpen {
+  grid-template-rows: 1fr;
+}
+
+.menuList {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuOpen .menuList {
+  padding-top: var(--stack-m);
+}
+
+.menuLink {
+  display: block;
+  padding: clamp(10px, 3vw, 14px) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: var(--t-lead);
+  font-weight: 600;
+}
+
+.menuLink:hover {
+  color: var(--brand);
+}

@@ -1,0 +1,64 @@
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: var(--stack-l);
+  min-height: clamp(360px, 96vw, 620px);
+  padding: clamp(18px, 5vw, 36px) var(--gutter) clamp(26px, 7vw, 48px);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 18%;
+  z-index: 0;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.58) 0%,
+    rgba(0, 0, 0, 0.28) 34%,
+    rgba(0, 0, 0, 0.12) 62%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.quote {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(6px, 2.2vw, 14px);
+  margin: 0;
+  color: var(--paper);
+}
+
+.mark {
+  flex: 0 0 auto;
+  color: var(--brand);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: clamp(140px, 45vw, 315px);
+  font-weight: 800;
+  line-height: 0.5;
+  margin-top: clamp(-14px, -3.4vw, -8px);
+}
+
+.text {
+  max-width: 40ch;
+  font-size: var(--t-body);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}

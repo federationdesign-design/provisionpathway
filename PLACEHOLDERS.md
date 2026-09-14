@@ -36,11 +36,16 @@ preferred wording.
 Both comps show a small plant at the foot of the signpost pole. No artwork has
 been supplied, so it is not rendered.
 
-## Links
+## Consent
 
-**CALENDLY_URL**
-`site.calendlyUrl` in `content/homepage.ts` is still
-`https://calendly.com/PLACEHOLDER/consultation`. Task 1.
+**CALENDLY_CONSENT_GATE**
+Calendly currently loads without a consent check. The widget script and its
+cookies load on the first interaction with a booking button
+(`components/CalendlyBooking.tsx`), whatever the visitor's cookie choices,
+because the consent system (Task 3) does not exist yet. When Task 3 lands,
+`loadCalendly` must be wired into the consent gate so the script cannot load
+before consent is given, with booking buttons falling back to the new tab link
+until it is.
 
 ## Copy
 
@@ -86,6 +91,12 @@ Removing the in person references left three wording points for the studio:
    which implies an alternative now that in person has been removed.
 
 ## About page decisions to confirm
+
+**Header clearance.** At desktop the header wordmark's flag pole hangs below
+the navigation row. On the homepage the opening section's top padding clears
+it. A band that meets the header directly, as on the About page, now takes a
+top margin equal to that overhang, rounded up to a whole pixel, so the header
+no longer sits over the band. The homepage is unchanged.
 
 1. **Header booking button.** The About comp has no booking button under the
    navigation, and the grey band starts directly beneath the header, where the

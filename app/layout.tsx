@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import AssessmentModalProvider from '../components/AssessmentModalProvider';
+import CalendlyBooking from '../components/CalendlyBooking';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import './globals.css';
@@ -47,6 +48,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </AssessmentModalProvider>
+        <CalendlyBooking />
       </body>
     </html>
   );

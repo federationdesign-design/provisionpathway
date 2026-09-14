@@ -71,12 +71,24 @@ The brand green token `--brand` is set to #97a97c, matching the supplied SVG
 artwork. Note that the Photoshop comp samples darker, around #7b8763, for the
 green band and headings, so bands render lighter than the comp.
 
+## Booking
+
+Every booking button carries `data-cta="book-meeting"` and links to the live
+Calendly page (`bookingUrl` in `content/homepage.ts`, with the brand green as
+`primary_color`). `CalendlyBooking`, in the root layout, opens those links in
+the Calendly popup widget instead. Its script loads on the first hover, focus or
+touch on a booking button, not with the page. If it cannot load, the link opens
+in a new tab, as it does without JavaScript. Focus starts on the popup's close
+control, Escape closes it, and focus returns to the button that opened it.
+Calendly's booking form is a cross-origin iframe, so Escape is not heard while
+focus is inside it; Tab returns to the close control.
+
+Calendly is not yet behind cookie consent; see `PLACEHOLDERS.md`.
+
 ## Still to do
 
-1. Calendly. `site.calendlyUrl` in `content/homepage.ts` is a placeholder.
-   Every booking button carries `data-cta="book-meeting"`.
-2. Google Analytics, `G-MMW4789DRX`, gated behind cookie consent for UK
-   GDPR and PECR.
+1. Google Analytics, `G-MMW4789DRX`, gated behind cookie consent for UK
+   GDPR and PECR, with Calendly wired into the same gate.
 
 Outstanding inputs are listed in `PLACEHOLDERS.md`.
 
@@ -99,8 +111,10 @@ rendered once by `AssessmentModalProvider` in the root layout and opened from
 the `Pathway` navigation item (`ServicesNavButton`, in the header, pinned bar
 and footer) and the `About the assessment` button (`AssessmentCta`). It holds
 both services from `servicesPopup` in `content/homepage.ts`, stacked on mobile
-and in two columns on desktop. The inline homepage assessment block still
-differs from the popup in places; see `PLACEHOLDERS.md`.
+and in two columns on desktop, with a single shared booking button below both.
+That single button is settled and not to be revisited. The inline homepage
+assessment block still differs from the popup in places; see
+`PLACEHOLDERS.md`.
 
 Two em dashes in the comp copy have been set as commas to match house style.
 

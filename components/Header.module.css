@@ -217,8 +217,10 @@
     padding: 0 0 0 var(--gutter);
   }
 
-  /* The row is the height of the nav. The wordmark's flag pole hangs below it,
-     as in the comp, without pushing the opening section down. */
+  /* The row is the height of the nav. The wordmark's flag pole hangs below it
+     by --header-overhang. The homepage opening's top padding already clears
+     it; a page whose first section meets the header takes that offset itself
+     (see .ruleAbove in Band.module.css). */
   .logoLink {
     width: 24.1vw;
     height: 4.55vw;

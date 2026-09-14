@@ -65,6 +65,11 @@ html {
 
     --pinned-bar-h: 4.55vw;
 
+    /* Desktop header. The navigation row is 4.55vw; the wordmark, 24.1vw wide
+       at its 720 by 168.7 artwork ratio, is taller and hangs below the row by
+       the difference. Content that meets the header must clear it. */
+    --header-overhang: calc(24.1vw * 168.7 / 720 - 4.55vw);
+
     --gutter: 4.4vw;
     --stack-s: 0.75vw;
     --stack-m: 1.5vw;

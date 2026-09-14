@@ -115,10 +115,16 @@ export default function Header() {
 
   // The header lives in the root layout and persists across client side
   // navigation, so the observer is rebuilt on every route change. A page with
-  // no hero watermark falls back to the static header bar as the trigger.
+  // no hero watermark uses its first section as the trigger instead, so the
+  // bar arrives once that page's opening band has scrolled away. The static
+  // header is only a last resort; at desktop it is barely taller than the bar
+  // and would pin it almost at once.
   useEffect(() => {
     const bar = barRef.current;
-    const watermark = document.getElementById(WATERMARK_ID) ?? staticBarRef.current;
+    const watermark =
+      document.getElementById(WATERMARK_ID) ??
+      document.querySelector<HTMLElement>('main > :first-child') ??
+      staticBarRef.current;
     if (!watermark || !bar) return;
     setPinned(false);
     // The top of the viewport is inset by the bar's height, so the watermark

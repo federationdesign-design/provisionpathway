@@ -2,10 +2,15 @@
 
 export const site = {
   name: 'The Provision Pathway',
-  // Step 2 of the roadmap: replace with the live Calendly link.
-  calendlyUrl: 'https://calendly.com/PLACEHOLDER/consultation',
+  calendlyUrl: 'https://calendly.com/theprovisionpathway-info/30min',
+  // Brand green, without the hash, as Calendly expects.
+  calendlyPrimaryColor: '97a97c',
   gaMeasurementId: 'G-MMW4789DRX',
 };
+
+// The link every booking button carries. The Calendly popup opens it on the
+// page; without JavaScript, or if the widget cannot load, it opens in a new tab.
+export const bookingUrl = `${site.calendlyUrl}?primary_color=${site.calendlyPrimaryColor}`;
 
 // A nav item either links somewhere or opens the services popup.
 export type NavItem = { label: string; href: string } | { label: string; opens: 'services' };

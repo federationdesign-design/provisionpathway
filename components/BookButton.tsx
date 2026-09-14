@@ -1,4 +1,4 @@
-import { site, cta } from '../content/homepage';
+import { bookingUrl, cta } from '../content/homepage';
 import styles from './BookButton.module.css';
 
 type Tone = 'light' | 'onDark' | 'onImage';
@@ -23,7 +23,7 @@ export default function BookButton({
   return (
     <a
       className={`${styles.button} ${toneClass} ${size === 'large' ? styles.large : ''} ${className}`}
-      href={site.calendlyUrl}
+      href={bookingUrl}
       data-cta="book-meeting"
       target="_blank"
       rel="noopener noreferrer"

@@ -57,7 +57,13 @@
     border-bottom: 1.9vw solid var(--brand-secondary);
   }
 
+  /* Directly under the header, the band starts below the wordmark's flag
+     pole rather than beneath it. Rounded up to a whole pixel so sub-pixel
+     layout can never leave the pole a fraction over the band; the calc line is
+     the fallback where round() is unsupported. */
   .ruleAbove {
+    margin-top: calc(var(--header-overhang) + 1px);
+    margin-top: round(up, var(--header-overhang), 1px);
     border-top-width: 1.85vw;
   }
 

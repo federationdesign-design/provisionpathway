@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { nav } from '../content/homepage';
 import BookButton from './BookButton';
@@ -41,6 +42,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
+  const staticBarRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const toggle = () => setOpen((v) => !v);
 
   useEffect(() => {
@@ -57,10 +60,14 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  // The header lives in the root layout and persists across client side
+  // navigation, so the observer is rebuilt on every route change. A page with
+  // no hero watermark falls back to the static header bar as the trigger.
   useEffect(() => {
-    const watermark = document.getElementById(WATERMARK_ID);
     const bar = barRef.current;
+    const watermark = document.getElementById(WATERMARK_ID) ?? staticBarRef.current;
     if (!watermark || !bar) return;
+    setPinned(false);
     // The top of the viewport is inset by the bar's height, so the watermark
     // counts as gone once it is behind where the bar sits. Pinned only when it
     // has left through the top, not while it is still below the fold.
@@ -73,7 +80,7 @@ export default function Header() {
     );
     observer.observe(watermark);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <header className={styles.header} id="top">
@@ -97,7 +104,7 @@ export default function Header() {
         <MenuToggle open={open} onToggle={toggle} className={styles.pinnedToggle} />
       </div>
 
-      <div className={styles.bar}>
+      <div className={styles.bar} ref={staticBarRef}>
         <a className={styles.logoLink} href="#top" aria-label="The Provision Pathway, home">
           {/* Desktop swaps to the one-line wordmark, which carries its own black field. */}
           <picture>

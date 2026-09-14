@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import AssessmentModalProvider from '../components/AssessmentModalProvider';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -36,7 +39,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-GB" className={jakarta.variable}>
-      <body>{children}</body>
+      <body>
+        {/* Shared by every page: header with the pinned mobile bar, footer, and
+            the one assessment lightbox. Pages render only their <main>. */}
+        <AssessmentModalProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AssessmentModalProvider>
+      </body>
     </html>
   );
 }

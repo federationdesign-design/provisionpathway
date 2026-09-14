@@ -131,10 +131,21 @@
 /* Desktop: a wider panel with one service per column, divided by a vertical
    rule, and a single, smaller booking button spanning both columns. */
 @media (min-width: 1024px) {
+  /* Centred in the screen rather than sheeted from the bottom, with room above
+     and below. The panel's height limit is a share of the overlay, not a vh
+     value, so it always fits the space the browser actually shows and scrolls
+     inside itself when the content is taller. */
+  .overlay {
+    align-items: center;
+    padding-block: var(--stack-l);
+  }
+
   .panel {
     max-width: none;
+    max-height: 100%;
     width: 64vw;
     padding: 2.5vw 3vw;
+    border-radius: 18px;
   }
 
   /* The panel is wide enough here for the title to clear the close button. */

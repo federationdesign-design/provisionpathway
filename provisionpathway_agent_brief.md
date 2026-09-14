@@ -18,7 +18,9 @@ The homepage carries two primary calls to action. The first books a free consult
 
 The mobile view is built, measured against the Photoshop comp at 390px, and committed to `main`. It passes type check and production build.
 
-All supplied brand assets are installed and in use. No placeholder assets remain. The brand green token is `#97a97c`, taken from the supplied SVG artwork. Note that the comp samples the green band and headings darker, at roughly `#7b8763`, so bands currently render lighter than the comp.
+All supplied brand assets are installed and in use. No placeholder assets remain. Dependencies are on patched releases, Next 15.5.25 and React 19.2.8, and the site has a live production deployment on Vercel from `main`.
+
+Two npm audit findings are known and deliberately left alone. `sharp` clears with a plain `npm audit fix`. `postcss` is pulled in by Next itself, and `npm audit fix --force` would force a major version jump to Next 16. Do not run the forced fix. The brand green token is `#97a97c`, taken from the supplied SVG artwork. Note that the comp samples the green band and headings darker, at roughly `#7b8763`, so bands currently render lighter than the comp.
 
 Points of structure worth knowing before touching the layout. The header is static, not sticky. The persona panel sits inside the green goal band as an inset card with rounded corners, not as a full bleed section above it. A full bleed grey divider separates the opening section from the green band. Body line height is 1.3 throughout; headings run tighter.
 
@@ -157,11 +159,7 @@ Three items are unresolved. Ask, do not choose.
 
 Any missing input must be logged in `PLACEHOLDERS.md` at the repository root with a clearly named placeholder. Never invent prices, dates, contact details or asset paths.
 
-## 10. Task 4: Dependency patch
-
-The repository pins `next` at 15.5.4, which carries a known security advisory. Upgrade to the current patched release and re-run all three verification gates. Do this before launch, and report any behaviour change rather than working around it.
-
-## 11. Definition of done
+## 10. Definition of done
 
 The branch is ready for review when all of the following hold.
 
@@ -172,5 +170,4 @@ The branch is ready for review when all of the following hold.
 5. The mobile view is unchanged in appearance from its committed state. Desktop work must not regress it.
 6. No route exists beyond the homepage.
 7. `PLACEHOLDERS.md` lists every outstanding input.
-8. `next` is on a patched release.
-9. Nothing has been committed to `main`.
+8. Nothing has been committed to `main`.

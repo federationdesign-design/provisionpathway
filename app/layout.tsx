@@ -7,6 +7,7 @@ import CookieBanner from '../components/CookieBanner';
 import CookieConsentProvider from '../components/CookieConsentProvider';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { siteUrl } from './siteUrl';
 import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -17,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.theprovisionpathway.co.uk'),
+  metadataBase: siteUrl(),
   title: 'The Provision Pathway | SEND consultancy in Warwickshire',
   description:
     'Independent SEND consultancy in Warwickshire. Structured, observation-based assessments that help families understand a young person\u2019s needs and plan a clear next step.',

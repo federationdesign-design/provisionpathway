@@ -20,9 +20,11 @@ export default function ContactPage() {
       <Band as="h1" headline={contactPage.title} paragraphs={[]} ruleAbove wideText watermark={false} />
 
       <div className={styles.section}>
-        <p className={styles.intro}>
-          <RichText text={contactPage.intro} />
-        </p>
+        {contactPage.intro.map((paragraph) => (
+          <p className={styles.intro} key={paragraph.slice(0, 24)}>
+            <RichText text={paragraph} />
+          </p>
+        ))}
 
         <section className={styles.part} aria-labelledby="contact-email-heading">
           <h2 className={styles.heading} id="contact-email-heading">

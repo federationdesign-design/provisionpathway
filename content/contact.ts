@@ -1,7 +1,7 @@
 // Copy for the Contact page and its enquiry form.
 //
 // Inline markup follows content/legal.ts: [PLACEHOLDER: ...] is highlighted
-// and [[label|href]] is a link. See CONTACT_PAGE_CONTENT in PLACEHOLDERS.md.
+// and [[label|href]] is a link.
 
 const email = 'info@theprovisionpathway.co.uk';
 const emailLink = `[[${email}|mailto:${email}]]`;
@@ -13,7 +13,10 @@ export const contactMeta = {
 
 export const contactPage = {
   title: 'Contact',
-  intro: '[PLACEHOLDER: contact page introduction, not yet supplied]',
+  intro: [
+    'If you have a question about an assessment, coaching, or how we work with families, please complete the contact form and a member of our team will respond to you by email as soon as possible.',
+    `You can also contact us by email at ${emailLink}`,
+  ],
   emailHeading: 'Email',
   email,
   formHeading: 'Send a message',

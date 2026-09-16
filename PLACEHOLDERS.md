@@ -123,12 +123,6 @@ short to contain it. Homepage and About are unchanged.
 The footer links to `/cookies-policy`, `/privacy-policy` and the new
 `/terms-of-use`. The content is logged under Legal pages above.
 
-**CONTACT_PAGE_CONTENT**
-`/contact` now exists. No introduction was supplied, so the page opens with a
-highlighted `[PLACEHOLDER: contact page introduction, not yet supplied]`
-(`contactPage.intro` in `content/contact.ts`). The email address is the one in
-the contact brief.
-
 **CONTACT_FOOTER_IMAGE**
 The ANT Training contact page the brief uses as a model carries a photograph
 above its footer. None was supplied, so it is omitted.

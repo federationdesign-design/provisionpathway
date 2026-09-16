@@ -10,6 +10,11 @@
   line-height: 1.3;
 }
 
+/* Paragraphs are separated by one blank line, as elsewhere on the site. */
+.intro + .intro {
+  margin-top: 1.3em;
+}
+
 /* Space above each part belongs to the part. */
 .part {
   margin-top: var(--stack-l);

@@ -210,8 +210,9 @@ export const obstacles = {
 
 export const footer = {
   legal: [
-    { label: 'Cookies policy', href: '#cookies' },
-    { label: 'Privacy Policy', href: '#privacy' },
+    { label: 'Cookies policy', href: '/cookies-policy' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms of use', href: '/terms-of-use' },
     { label: 'Contact us', href: '#contact' },
   ],
   copyright: '\u00a9 2026 All Rights Reserved. Designed by Federation Design Company',

@@ -14,6 +14,10 @@
   --rule: #000000;
   --nav-rule: #cecece;
 
+  /* Highlight for unconfirmed detail in the legal pages. Must be gone before
+     launch, so it is deliberately off palette. */
+  --placeholder-bg: #ffe45c;
+
   /* Liquid type scale. Everything grows with the viewport rather than
      stepping at breakpoints, matching the house pattern. */
   --t-hero: clamp(28px, 7.4vw, 64px);

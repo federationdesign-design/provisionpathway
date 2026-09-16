@@ -19,6 +19,7 @@ export default function Band({
   links,
   ruleAbove = false,
   wideText = false,
+  watermark = true,
 }: {
   id?: string;
   as?: 'h1' | 'h2';
@@ -30,6 +31,8 @@ export default function Band({
   ruleAbove?: boolean;
   /** Longer text measure, as set on the About comp. */
   wideText?: boolean;
+  /** Desktop watermark logo. Off for a band too short to hold it. */
+  watermark?: boolean;
 }) {
   const className = [styles.section, ruleAbove ? styles.ruleAbove : '', wideText ? styles.wideText : '']
     .filter(Boolean)
@@ -47,14 +50,16 @@ export default function Band({
       ))}
 
       {/* Desktop only: watermark logo and quick links in the left column. */}
-      <img
-        className={styles.watermark}
-        src="/assets/logo-footer-white.svg"
-        alt=""
-        aria-hidden="true"
-        width={720}
-        height={664}
-      />
+      {watermark && (
+        <img
+          className={styles.watermark}
+          src="/assets/logo-footer-white.svg"
+          alt=""
+          aria-hidden="true"
+          width={720}
+          height={664}
+        />
+      )}
 
       {links && (
         <nav className={styles.links} aria-label="Quick links">

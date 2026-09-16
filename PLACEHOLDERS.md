@@ -52,36 +52,77 @@ from the studio's consent system and describes only what the site does:
 remember the choice, Google Analytics, Calendly, and the new tab fallback.
 Review it alongside the cookies policy.
 
-**CONSENT_POLICY_LINK**
-The banner links to `/cookies-policy`, which is built in section 4 of the
-contact brief. Until then the link leads to a 404. Do not ship the banner
-without that page.
+**CONSENT_POLICY_LINK** (resolved)
+The banner links to `/cookies-policy`, which now exists.
 
 **CALENDLY_THIRD_PARTY_COOKIES**
-For the cookie table in section 4. With consent, the Calendly popup was seen
+Used for the cookie table on `/cookies-policy`. With consent, the Calendly popup was seen
 to set `__cf_bm`, `_cfuvid` and `OptanonConsent` on `.calendly.com`, and `m` on
 `m.stripe.com`, from inside its iframe. Google Analytics set `_ga` and
 `_ga_MMW4789DRX` on this site's domain. These belong to Calendly and Stripe,
 so withdrawing consent cannot clear them from this site; it clears the GA
 cookies and stops GA sending.
 
-## Legal pages: provisional company details
+## Legal pages
 
-**Confirmed detail is expected this evening. The legal pages must not go to
-production carrying any of these values.** Each one is to appear on the pages
-as a visible token, not as though it were confirmed.
+**LEGAL_PAGES_REVIEW**
+`/cookies-policy`, `/privacy-policy` and `/terms-of-use` (copy in
+`content/legal.ts`) are adapted from the studio's policies for another
+project. They were rewritten for this business, but they have not been
+reviewed. They need review by the client, and ideally by someone qualified,
+before they can be relied on. Each page opens with a highlighted draft notice
+saying so, to be removed on approval.
+
+Every unconfirmed value on these pages is written as a
+`[PLACEHOLDER: ...]` token, which the pages render highlighted in yellow
+(`--placeholder-bg`). Before launch, search the site for `PLACEHOLDER`: none may
+remain.
+
+**Provisional company details.** Confirmed detail is expected this evening.
+**The legal pages must not go to production carrying any of these values.**
+Each appears on the pages as a highlighted token, never as though it were
+confirmed.
 
 1. **REGISTERED_COMPANY_NAME** provisional: The Provision Pathway
 2. **REGISTERED_ADDRESS** provisional: 123 Fake Street
 3. **ICO_REGISTRATION** provisional: none held
 4. **DATA_PROTECTION_CONTACT** provisional: Zara Azad
 
+**Further gaps in the legal pages.** None of these were supplied, and each is a
+highlighted token on the page:
+
+1. **LEGAL_LAST_UPDATED** The "Last updated" date on all three pages.
+2. **SPECIAL_CATEGORY_CONDITION** Enquiries about a young person may include
+   health information, which is special category data. The privacy policy
+   needs the condition relied on to process it. This is the point most in need
+   of qualified advice.
+3. **INTERNATIONAL_TRANSFERS** Vercel, Resend, Calendly and Google may process
+   data outside the UK. The safeguards relied on are not stated.
+4. **RETENTION_ENQUIRY_EMAILS** How long enquiry emails are kept in the inbox.
+5. **RETENTION_BOOKING_RECORDS** How long Calendly booking records are kept.
+6. **GA4_RETENTION_SETTING** The data retention setting in the Google Analytics
+   property.
+7. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
+   coaching services. The terms of use cover the website only.
+
+**Legal bases chosen for review.** The privacy policy states consent for
+replying to enquiries (the form's checkbox) and for analytics, steps before a
+contract for consultation bookings, and legitimate interests for hosting and
+security. These were chosen to match how the site works, not supplied.
+
+**LIVE_SITE_COOKIES_UNVERIFIED** The cookies policy says the website sets no
+cookies of its own. That was verified against a local production build, which
+sets none. It was not checked against the live Vercel deployment.
+
+**Band watermark.** The legal pages use the About page's green title band
+without the desktop watermark logo, because a band holding only a title is too
+short to contain it. Homepage and About are unchanged.
+
 ## Copy
 
-**COOKIES_AND_PRIVACY_POLICY**
-The footer still links to `#cookies` and `#privacy`, which do not exist. They
-become `/cookies-policy`, `/privacy-policy` and `/terms-of-use` in section 4 of
-the contact brief, which is held for review.
+**COOKIES_AND_PRIVACY_POLICY** (resolved)
+The footer links to `/cookies-policy`, `/privacy-policy` and the new
+`/terms-of-use`. The content is logged under Legal pages above.
 
 **CONTACT_PAGE_CONTENT**
 No Contact page content has been supplied, so no `/contact` route exists. The

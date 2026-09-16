@@ -38,9 +38,9 @@ export default function Footer() {
       <ul className={styles.legal}>
         {footer.legal.map((item) => (
           <li key={item.label}>
-            <a className={styles.legalLink} href={item.href}>
+            <Link className={styles.legalLink} href={item.href}>
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
         <li>

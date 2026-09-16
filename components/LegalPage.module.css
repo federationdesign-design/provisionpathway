@@ -1,0 +1,128 @@
+/* The policy text beneath the band. Same gutter and liquid tokens as the rest
+   of the site; the measure is set in characters so it grows with the type. */
+.section {
+  padding: var(--stack-l) var(--gutter) var(--stack-xl);
+}
+
+.updated {
+  font-size: var(--t-small);
+}
+
+/* Space above each part belongs to the part. */
+.part {
+  margin-top: var(--stack-l);
+}
+
+.heading {
+  font-size: var(--t-h3);
+  line-height: 1.14;
+}
+
+.body,
+.list {
+  max-width: 70ch;
+  margin-top: var(--stack-s);
+  font-size: var(--t-body);
+  line-height: 1.3;
+}
+
+.list {
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+.item + .item {
+  margin-top: 0.5em;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--brand);
+}
+
+/* Unconfirmed detail. Loud on purpose, so it cannot be read as final. */
+.placeholder {
+  padding: 0 0.2em;
+  background: var(--placeholder-bg);
+  color: var(--ink);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tableScroll {
+  margin-top: var(--stack-m);
+  overflow-x: auto;
+}
+
+.tableScroll:focus-visible {
+  outline-offset: 0;
+}
+
+.table {
+  min-width: 40em;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+  line-height: 1.3;
+}
+
+.caption {
+  padding-bottom: var(--stack-s);
+  font-weight: 700;
+  text-align: left;
+}
+
+.th,
+.td {
+  padding: 0.6em 1em 0.6em 0;
+  border-bottom: 1px solid var(--nav-rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.th {
+  font-weight: 700;
+}
+
+thead .th {
+  border-bottom-color: var(--ink);
+}
+
+/* Cookie names are identifiers, not words, so they never break. */
+.rowHead {
+  white-space: nowrap;
+}
+
+/* Desktop: the text sits in the band's centre column, under the title. */
+@media (min-width: 1024px) {
+  .section {
+    display: grid;
+    grid-template-columns: 22.75vw minmax(0, 65.5vw);
+    padding: 3.775vw var(--gutter) 5.8vw;
+  }
+
+  .section > * {
+    grid-column: 2;
+  }
+
+  .part {
+    margin-top: 2.9vw;
+  }
+
+  .body,
+  .list {
+    margin-top: 1vw;
+  }
+
+  .tableScroll {
+    margin-top: 1.5vw;
+  }
+
+  .table {
+    width: 100%;
+  }
+}

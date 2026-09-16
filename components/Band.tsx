@@ -32,10 +32,16 @@ export default function Band({
   ruleAbove?: boolean;
   /** Longer text measure, as set on the About comp. */
   wideText?: boolean;
-  /** Desktop watermark logo. Off for a band too short to hold it. */
+  /** Desktop watermark logo. Off for a band too short to hold it, which also
+      drops the left column so the text sits on the page gutter. */
   watermark?: boolean;
 }) {
-  const className = [styles.section, ruleAbove ? styles.ruleAbove : '', wideText ? styles.wideText : '']
+  const className = [
+    styles.section,
+    ruleAbove ? styles.ruleAbove : '',
+    wideText ? styles.wideText : '',
+    watermark ? '' : styles.noWatermark,
+  ]
     .filter(Boolean)
     .join(' ');
 

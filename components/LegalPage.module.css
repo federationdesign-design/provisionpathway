@@ -35,9 +35,14 @@
   margin-top: 0.5em;
 }
 
+/* Capped at the paragraphs' reading width, so on wide screens a row stays short
+   enough to scan. The wrapper takes body type only so 70ch here matches the
+   paragraphs' 70ch; the table sets its own size. */
 .tableScroll {
+  max-width: 70ch;
   margin-top: var(--stack-m);
   overflow-x: auto;
+  font-size: var(--t-body);
 }
 
 .tableScroll:focus-visible {

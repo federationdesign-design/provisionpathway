@@ -96,6 +96,18 @@
     max-width: 65.5vw;
   }
 
+  /* No watermark, so no left column: the text starts at the gutter, in line
+     with the page content below. */
+  .noWatermark {
+    grid-template-columns: 1fr;
+  }
+
+  .noWatermark .headline,
+  .noWatermark .body,
+  .noWatermark .media {
+    grid-column: 1;
+  }
+
   /* Media leads in the document for mobile, and follows the text here. */
   .media {
     order: 1;

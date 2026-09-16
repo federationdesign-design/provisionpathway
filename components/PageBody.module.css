@@ -1,0 +1,12 @@
+/* The content beneath a page's title band, on the legal pages and /contact.
+   It sits on the same gutter as the band and the rest of the site at every
+   width; nothing is indented into a column. */
+.section {
+  padding: var(--stack-l) var(--gutter) var(--stack-xl);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 3.775vw var(--gutter) 5.8vw;
+  }
+}

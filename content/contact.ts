@@ -14,11 +14,9 @@ export const contactMeta = {
 export const contactPage = {
   title: 'Contact',
   intro: [
-    'If you have a question about an assessment, coaching, or how we work with families, please complete the contact form and a member of our team will respond to you by email as soon as possible.',
+    'If you have a question about an assessment, coaching, or how we work with families, please complete the contact form and a member of our team will get back to you as soon as possible.',
     `You can also contact us by email at ${emailLink}`,
   ],
-  emailHeading: 'Email',
-  email,
   formHeading: 'Send a message',
 };
 

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { TriangleIcon } from './Icons';
+import RichText from './RichText';
 import styles from './Band.module.css';
 
 type Link = { label: string; href: string };
@@ -45,7 +46,7 @@ export default function Band({
       <Heading className={styles.headline}>{headline}</Heading>
       {paragraphs.map((paragraph) => (
         <p className={styles.body} key={paragraph.slice(0, 24)}>
-          {paragraph}
+          <RichText text={paragraph} />
         </p>
       ))}
 

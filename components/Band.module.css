@@ -30,6 +30,12 @@
   margin-top: 1.3em;
 }
 
+/* A link in the band's copy. The site's usual brand green hover would vanish
+   against the green band, so it darkens instead. */
+.body a:hover {
+  color: var(--ink);
+}
+
 /* The watermark and quick links are desktop only. */
 .watermark,
 .links {

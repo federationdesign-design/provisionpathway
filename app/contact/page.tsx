@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Band from '../../components/Band';
 import ContactForm from '../../components/ContactForm';
-import RichText from '../../components/RichText';
 import { contactMeta, contactPage } from '../../content/contact';
 import styles from '../../components/ContactPage.module.css';
 
@@ -11,37 +10,19 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
 };
 
-// A short introduction, the contact details, then the enquiry form. The title
-// band matches the legal pages, without the desktop watermark it is too short
-// to hold.
+// The introduction and email address sit in the green band beside the
+// watermark, as the About page's body copy does, with the enquiry form below.
 export default function ContactPage() {
   return (
     <main>
-      <Band as="h1" headline={contactPage.title} paragraphs={[]} ruleAbove wideText watermark={false} />
+      <Band as="h1" headline={contactPage.title} paragraphs={contactPage.intro} ruleAbove wideText />
 
-      <div className={styles.section}>
-        {contactPage.intro.map((paragraph) => (
-          <p className={styles.intro} key={paragraph.slice(0, 24)}>
-            <RichText text={paragraph} />
-          </p>
-        ))}
-
-        <section className={styles.part} aria-labelledby="contact-email-heading">
-          <h2 className={styles.heading} id="contact-email-heading">
-            {contactPage.emailHeading}
-          </h2>
-          <a className={styles.email} href={`mailto:${contactPage.email}`}>
-            {contactPage.email}
-          </a>
-        </section>
-
-        <section className={styles.part} aria-labelledby="contact-form-heading">
-          <h2 className={styles.heading} id="contact-form-heading">
-            {contactPage.formHeading}
-          </h2>
-          <ContactForm />
-        </section>
-      </div>
+      <section className={styles.section} aria-labelledby="contact-form-heading">
+        <h2 className={styles.heading} id="contact-form-heading">
+          {contactPage.formHeading}
+        </h2>
+        <ContactForm />
+      </section>
     </main>
   );
 }

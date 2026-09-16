@@ -1,7 +1,7 @@
-/* The policy text beneath the band. Same gutter and liquid tokens as the rest
-   of the site; the measure is set in characters so it grows with the type. */
+/* The policy text beneath the band. The measure is set in characters so it
+   grows with the type. */
 .section {
-  padding: var(--stack-l) var(--gutter) var(--stack-xl);
+  composes: section from './PageBody.module.css';
 }
 
 .updated {
@@ -78,18 +78,7 @@ thead .th {
   white-space: nowrap;
 }
 
-/* Desktop: the text sits in the band's centre column, under the title. */
 @media (min-width: 1024px) {
-  .section {
-    display: grid;
-    grid-template-columns: 22.75vw minmax(0, 65.5vw);
-    padding: 3.775vw var(--gutter) 5.8vw;
-  }
-
-  .section > * {
-    grid-column: 2;
-  }
-
   .part {
     margin-top: 2.9vw;
   }

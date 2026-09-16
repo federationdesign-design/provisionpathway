@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import styles from './LegalPage.module.css';
+import styles from './RichText.module.css';
 
-// Renders the inline markup used in content/legal.ts: placeholders are
-// highlighted, and [[label|href]] becomes a link.
+// Renders the inline markup used in the content layer (see content/legal.ts):
+// [PLACEHOLDER: ...] is highlighted, and [[label|href]] becomes a link.
 const TOKEN = /(\[PLACEHOLDER:[^\]]*\]|\[\[[^\]|]+\|[^\]]+\]\])/;
 
-export default function LegalText({ text }: { text: string }) {
+export default function RichText({ text }: { text: string }) {
   return (
     <>
       {text.split(TOKEN).map((part, i) => {

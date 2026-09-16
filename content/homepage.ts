@@ -19,7 +19,7 @@ export const nav: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Pathway', opens: 'services' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const intro = {
@@ -71,7 +71,7 @@ export const goal = {
     { label: 'Assessment & Report', href: '#assessment' },
     { label: 'Helping Families', href: '#pathway' },
     { label: 'Request Consultation', href: '#contact' },
-    { label: 'Contact us', href: '#contact' },
+    { label: 'Contact us', href: '/contact' },
   ],
 };
 
@@ -213,7 +213,7 @@ export const footer = {
     { label: 'Cookies policy', href: '/cookies-policy' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms of use', href: '/terms-of-use' },
-    { label: 'Contact us', href: '#contact' },
+    { label: 'Contact us', href: '/contact' },
   ],
   copyright: '\u00a9 2026 All Rights Reserved. Designed by Federation Design Company',
 };

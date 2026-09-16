@@ -1,0 +1,18 @@
+.link {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--brand);
+}
+
+/* Unconfirmed detail. Loud on purpose, so it cannot be read as final. */
+.placeholder {
+  padding: 0 0.2em;
+  background: var(--placeholder-bg);
+  color: var(--ink);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}

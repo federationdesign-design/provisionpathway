@@ -1,0 +1,202 @@
+/* Space above each field belongs to the field. */
+.form {
+  max-width: 60ch;
+}
+
+.field,
+.fieldset,
+.failed,
+.submit {
+  margin-top: var(--stack-m);
+}
+
+.summary {
+  margin-top: var(--stack-s);
+  padding: 0.6em 0.9em;
+  border-left: 4px solid var(--error);
+  color: var(--error);
+  font-size: var(--t-body);
+  font-weight: 600;
+}
+
+.fieldset {
+  min-width: 0;
+  margin-inline: 0;
+  padding: 0;
+  border: 0;
+}
+
+.label {
+  display: block;
+  padding: 0;
+  font-size: var(--t-body);
+  font-weight: 600;
+}
+
+.need,
+.hint {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.hint {
+  margin-top: 0.3em;
+  font-size: var(--t-small);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 0.4em;
+  padding: 0.55em 0.75em;
+  background: var(--paper);
+  border: 1.5px solid var(--brand-secondary);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--t-body);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em 1.5em;
+  margin-top: 0.3em;
+}
+
+/* The whole label is the target, at least 44px tall. */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  font-size: var(--t-body);
+  cursor: pointer;
+}
+
+.radio,
+.checkbox {
+  flex: 0 0 auto;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+  accent-color: var(--black);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+}
+
+.checkbox {
+  margin-top: 0.1em;
+}
+
+.consentLabel {
+  font-size: var(--t-body);
+  line-height: 1.3;
+}
+
+.error {
+  margin-top: 0.4em;
+  color: var(--error);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.failed {
+  padding: 0.6em 0.9em;
+  border-left: 4px solid var(--error);
+  font-size: var(--t-body);
+}
+
+.failed:focus {
+  outline: none;
+}
+
+/* Parked off screen rather than hidden, so form filling scripts still see it. */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Matches the site's regular booking button. */
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: clamp(9px, 2.4vw, 14px) clamp(18px, 5vw, 34px);
+  background: transparent;
+  border: 1.5px solid var(--button-stroke);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.submit:hover {
+  background: var(--button-stroke);
+  color: var(--black);
+}
+
+.submit[aria-disabled='true'] {
+  cursor: progress;
+}
+
+.sent {
+  max-width: 60ch;
+  margin-top: var(--stack-m);
+  padding: var(--stack-m);
+  background: var(--brand-tint);
+  border-radius: var(--radius-card);
+}
+
+.sent:focus {
+  outline: none;
+}
+
+.sentHeading {
+  font-size: var(--t-h3);
+  line-height: 1.14;
+}
+
+.sentBody {
+  margin-top: var(--stack-s);
+  font-size: var(--t-body);
+}
+
+@media (min-width: 1024px) {
+  .field,
+  .fieldset,
+  .failed,
+  .submit {
+    margin-top: 1.5vw;
+  }
+
+  .input {
+    border-width: 0.1vw;
+  }
+
+  .submit {
+    padding: 1.375vw 1.95vw;
+    border-width: 0.2vw;
+    font-size: var(--t-lead);
+  }
+}

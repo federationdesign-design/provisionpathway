@@ -1,13 +1,13 @@
 import { legalIntro, type LegalBlock, type LegalPageContent } from '../content/legal';
 import Band from './Band';
-import LegalText from './LegalText';
+import RichText from './RichText';
 import styles from './LegalPage.module.css';
 
 function Block({ block }: { block: LegalBlock }) {
   if (typeof block === 'string') {
     return (
       <p className={styles.body}>
-        <LegalText text={block} />
+        <RichText text={block} />
       </p>
     );
   }
@@ -17,7 +17,7 @@ function Block({ block }: { block: LegalBlock }) {
       <ul className={styles.list}>
         {block.list.map((item) => (
           <li className={styles.item} key={item.slice(0, 40)}>
-            <LegalText text={item} />
+            <RichText text={item} />
           </li>
         ))}
       </ul>
@@ -70,7 +70,7 @@ export default function LegalPage({ page }: { page: LegalPageContent }) {
 
       <div className={styles.section}>
         <p className={styles.updated}>
-          {legalIntro.lastUpdatedLabel} <LegalText text={page.lastUpdated} />
+          {legalIntro.lastUpdatedLabel} <RichText text={page.lastUpdated} />
         </p>
 
         {page.sections.map((section) => (

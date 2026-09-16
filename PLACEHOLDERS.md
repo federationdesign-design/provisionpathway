@@ -42,9 +42,8 @@ been supplied, so it is not rendered.
 Calendly and Google Analytics 4 now both sit behind the one optional cookie
 category (`components/CookieConsentProvider.tsx`). Until the visitor accepts,
 no request goes to Calendly or Google, and a booking button opens the
-scheduling link in a new tab. Verified by network inspection on `/` and
-`/about`; `/contact` and the legal pages do not exist yet and must be checked
-when they do.
+scheduling link in a new tab. Verified by network inspection on `/`,
+`/about`, `/cookies-policy`, `/privacy-policy`, `/terms-of-use` and `/contact`.
 
 **CONSENT_BANNER_COPY**
 No banner wording was supplied. The text in `content/consent.ts` is adapted
@@ -125,10 +124,21 @@ The footer links to `/cookies-policy`, `/privacy-policy` and the new
 `/terms-of-use`. The content is logged under Legal pages above.
 
 **CONTACT_PAGE_CONTENT**
-No Contact page content has been supplied, so no `/contact` route exists. The
-`Contact` navigation item still links to `#contact`, the footer's id, which is
-present on every page, so the link does not break and no placeholder route was
-needed.
+`/contact` now exists. No introduction was supplied, so the page opens with a
+highlighted `[PLACEHOLDER: contact page introduction, not yet supplied]`
+(`contactPage.intro` in `content/contact.ts`). The email address is the one in
+the contact brief.
+
+**CONTACT_FOOTER_IMAGE**
+The ANT Training contact page the brief uses as a model carries a photograph
+above its footer. None was supplied, so it is omitted.
+
+**CONTACT_FORM_WORDING**
+None of the form's wording was supplied. The section headings ("Email", "Send a
+message"), field hints, error messages, consent sentence, failure message and
+confirmation ("Thank you. Your message has been sent.") in `content/contact.ts`
+were written to describe only what the form does, and make no claim about
+response times. Review them.
 
 ## Copy conflicts to raise
 
@@ -160,6 +170,43 @@ Removing the in person references left three wording points for the studio:
    longer has anything to qualify.
 3. The homepage Format line still says the debrief is remote "as standard",
    which implies an alternative now that in person has been removed.
+
+## Contact form decisions to confirm
+
+1. **TELEPHONE_CONDITIONAL** Telephone is required when Phone call, Mobile
+   call or SMS or WhatsApp is chosen, and optional when Email is chosen. Its
+   label switches between "(required)" and "(optional)" and a hint beneath says
+   why. A number that is given is checked either way: 10 to 15 digits, with
+   spaces, brackets, dots, hyphens and a leading plus allowed. The same check
+   runs in the browser and in the route handler (`components/contactValidation.ts`).
+2. **Contact method required.** The brief lists the method field without
+   saying whether it is required. It is required here, because the telephone
+   rule depends on it and the client needs the preference to act on.
+3. **Field order.** The brief lists Name, Email, Telephone, Message, method.
+   The method is asked before Telephone, so the visitor sees whether a number is
+   needed before reaching that field. Otherwise the order follows the brief.
+4. **CONTACT_RATE_LIMIT** At most 5 submissions per connection in 10 minutes,
+   counted in memory. On Vercel that count is per server instance and resets
+   when an instance is recycled, so it slows a script but is not a hard cap. A
+   shared store (for example Vercel KV or Upstash) would make it exact, at the
+   cost of another service.
+5. **No autoresponder.** Only the notification to the client is sent. The
+   enquirer gets the confirmation on the page, not an email, because no wording
+   was supplied for one.
+6. **Resend without the SDK.** The route handler calls Resend's REST API with
+   `fetch`, so no new dependency was added.
+7. **Request Consultation quick link.** The homepage band's desktop quick links
+   still point "Request Consultation" at `#contact`, the footer. It may belong on
+   `/contact` or on the booking popup. "Contact us" now points at `/contact`.
+
+**CONTACT_LIVE_SEND_UNVERIFIED**
+The full send path was tested locally against a stand in for Resend that
+recorded each request: recipient and sender from the environment, Reply-To set
+to the enquirer, the method and telephone in the body, HTML escaped, honeypot
+and rate limit working, and the failure path keeping what was typed. No real
+email was sent. Before launch, send one test enquiry on a Vercel preview to
+confirm that the key works, that the `CONTACT_FROM_EMAIL` domain is verified in
+Resend, and that replying from the inbox reaches the enquirer.
 
 ## About page decisions to confirm
 

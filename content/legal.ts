@@ -3,7 +3,7 @@
 // Adapted from the studio's policies for another project, and not yet reviewed
 // by the client. See LEGAL_PAGES_REVIEW in PLACEHOLDERS.md.
 //
-// Inline markup, rendered by components/LegalText.tsx:
+// Inline markup, rendered by components/RichText.tsx:
 //   [PLACEHOLDER: ...]   shown highlighted, so unconfirmed detail can never be
 //                        mistaken for confirmed detail
 //   [[label|href]]       a link

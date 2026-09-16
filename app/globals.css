@@ -18,6 +18,10 @@
      launch, so it is deliberately off palette. */
   --placeholder-bg: #ffe45c;
 
+  /* Form text. Both pass WCAG AA against the page background. */
+  --muted: #595959;
+  --error: #b3261e;
+
   /* Liquid type scale. Everything grows with the viewport rather than
      stepping at breakpoints, matching the house pattern. */
   --t-hero: clamp(28px, 7.4vw, 64px);

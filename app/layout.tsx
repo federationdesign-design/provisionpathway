@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import Analytics from '../components/Analytics';
 import AssessmentModalProvider from '../components/AssessmentModalProvider';
 import CalendlyBooking from '../components/CalendlyBooking';
+import CookieBanner from '../components/CookieBanner';
+import CookieConsentProvider from '../components/CookieConsentProvider';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import './globals.css';
@@ -14,7 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://provisionpathway.co.uk'),
+  metadataBase: new URL('https://www.theprovisionpathway.co.uk'),
   title: 'The Provision Pathway | SEND consultancy in Warwickshire',
   description:
     'Independent SEND consultancy in Warwickshire. Structured, observation-based assessments that help families understand a young person\u2019s needs and plan a clear next step.',
@@ -41,14 +44,20 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={jakarta.variable}>
       <body>
-        {/* Shared by every page: header with the pinned mobile bar, footer, and
-            the one assessment lightbox. Pages render only their <main>. */}
-        <AssessmentModalProvider>
-          <Header />
-          {children}
-          <Footer />
-        </AssessmentModalProvider>
-        <CalendlyBooking />
+        {/* Shared by every page: the cookie banner, header with the pinned
+            mobile bar, footer, and the one assessment lightbox. Pages render
+            only their <main>. Analytics and Calendly read the visitor's cookie
+            decision and load nothing without consent. */}
+        <CookieConsentProvider>
+          <CookieBanner />
+          <AssessmentModalProvider>
+            <Header />
+            {children}
+            <Footer />
+          </AssessmentModalProvider>
+          <CalendlyBooking />
+          <Analytics />
+        </CookieConsentProvider>
       </body>
     </html>
   );

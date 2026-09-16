@@ -38,20 +38,50 @@ been supplied, so it is not rendered.
 
 ## Consent
 
-**CALENDLY_CONSENT_GATE**
-Calendly currently loads without a consent check. The widget script and its
-cookies load on the first interaction with a booking button
-(`components/CalendlyBooking.tsx`), whatever the visitor's cookie choices,
-because the consent system (Task 3) does not exist yet. When Task 3 lands,
-`loadCalendly` must be wired into the consent gate so the script cannot load
-before consent is given, with booking buttons falling back to the new tab link
-until it is.
+**CALENDLY_CONSENT_GATE** (resolved)
+Calendly and Google Analytics 4 now both sit behind the one optional cookie
+category (`components/CookieConsentProvider.tsx`). Until the visitor accepts,
+no request goes to Calendly or Google, and a booking button opens the
+scheduling link in a new tab. Verified by network inspection on `/` and
+`/about`; `/contact` and the legal pages do not exist yet and must be checked
+when they do.
+
+**CONSENT_BANNER_COPY**
+No banner wording was supplied. The text in `content/consent.ts` is adapted
+from the studio's consent system and describes only what the site does:
+remember the choice, Google Analytics, Calendly, and the new tab fallback.
+Review it alongside the cookies policy.
+
+**CONSENT_POLICY_LINK**
+The banner links to `/cookies-policy`, which is built in section 4 of the
+contact brief. Until then the link leads to a 404. Do not ship the banner
+without that page.
+
+**CALENDLY_THIRD_PARTY_COOKIES**
+For the cookie table in section 4. With consent, the Calendly popup was seen
+to set `__cf_bm`, `_cfuvid` and `OptanonConsent` on `.calendly.com`, and `m` on
+`m.stripe.com`, from inside its iframe. Google Analytics set `_ga` and
+`_ga_MMW4789DRX` on this site's domain. These belong to Calendly and Stripe,
+so withdrawing consent cannot clear them from this site; it clears the GA
+cookies and stops GA sending.
+
+## Legal pages: provisional company details
+
+**Confirmed detail is expected this evening. The legal pages must not go to
+production carrying any of these values.** Each one is to appear on the pages
+as a visible token, not as though it were confirmed.
+
+1. **REGISTERED_COMPANY_NAME** provisional: The Provision Pathway
+2. **REGISTERED_ADDRESS** provisional: 123 Fake Street
+3. **ICO_REGISTRATION** provisional: none held
+4. **DATA_PROTECTION_CONTACT** provisional: Zara Azad
 
 ## Copy
 
 **COOKIES_AND_PRIVACY_POLICY**
-The footer links to `#cookies` and `#privacy`. No policy content has been
-supplied. Task 3.
+The footer still links to `#cookies` and `#privacy`, which do not exist. They
+become `/cookies-policy`, `/privacy-policy` and `/terms-of-use` in section 4 of
+the contact brief, which is held for review.
 
 **CONTACT_PAGE_CONTENT**
 No Contact page content has been supplied, so no `/contact` route exists. The

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { footer, nav } from '../content/homepage';
+import CookieSettingsButton from './CookieSettingsButton';
 import ServicesNavButton from './ServicesNavButton';
 import styles from './Footer.module.css';
 
@@ -42,6 +43,9 @@ export default function Footer() {
             </a>
           </li>
         ))}
+        <li>
+          <CookieSettingsButton className={`${styles.legalLink} ${styles.legalButton}`} />
+        </li>
       </ul>
 
       <p className={styles.copyright}>{footer.copyright}</p>

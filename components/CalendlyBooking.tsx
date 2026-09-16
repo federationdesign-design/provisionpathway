@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { cta } from '../content/homepage';
+import { useCookieConsent } from './CookieConsentProvider';
 
 // Opens every booking button in the Calendly popup widget, without leaving the
 // page. Rendered once in the root layout; it renders nothing itself and works
@@ -13,7 +14,9 @@ import { cta } from '../content/homepage';
 // load, the button falls back to opening the scheduling link in a new tab, as
 // it does without JavaScript.
 //
-// Not yet behind cookie consent: see CALENDLY_CONSENT_GATE in PLACEHOLDERS.md.
+// Calendly sets cookies, so none of this happens without cookie consent. Until
+// the visitor accepts, or after they reject, nothing is fetched from Calendly
+// and a booking button is left to open its link in a new tab.
 
 const SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js';
 const STYLE_HREF = 'https://assets.calendly.com/assets/external/widget.css';
@@ -157,17 +160,25 @@ function managePopup(api: CalendlyApi, trigger: HTMLElement) {
 }
 
 export default function CalendlyBooking() {
+  const { consent } = useCookieConsent();
+  // Read by the listeners below, which are attached once, so a change of mind
+  // applies to the very next interaction.
+  const allowed = useRef(false);
+  allowed.current = consent?.analytics === true;
+
   useEffect(() => {
     const triggerFrom = (target: EventTarget | null) =>
       target instanceof Element ? target.closest<HTMLAnchorElement>(TRIGGER) : null;
 
     const warm = (e: Event) => {
-      if (triggerFrom(e.target)) loadCalendly().catch(() => {});
+      if (allowed.current && triggerFrom(e.target)) loadCalendly().catch(() => {});
     };
 
     const onClick = (e: MouseEvent) => {
       const trigger = triggerFrom(e.target);
       if (!trigger || e.defaultPrevented) return;
+      // Without consent the link's own new tab is the booking route.
+      if (!allowed.current) return;
       // A modified or middle click asks for a new tab; let the link do that.
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       // Once loading has failed, the link's own new tab is the fallback.

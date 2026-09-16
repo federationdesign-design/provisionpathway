@@ -54,6 +54,19 @@
   color: var(--button-stroke);
 }
 
+/* Cookie settings is a button. Strip the browser's button styling so it
+   renders exactly as the links beside it. */
+.legalButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
+}
+
 .copyright {
   margin-top: clamp(6px, 2vw, 12px);
   font-size: var(--t-micro);

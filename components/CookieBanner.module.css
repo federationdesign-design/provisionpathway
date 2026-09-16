@@ -1,0 +1,148 @@
+/* Fixed to the foot of the screen, black like the footer. Above the header
+   and the services popup, below the Calendly popup, which can only open once
+   a choice has been made. No entrance motion. */
+.banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  padding: var(--stack-m) var(--gutter) calc(var(--stack-m) + env(safe-area-inset-bottom));
+  background: var(--black);
+  color: var(--paper);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.banner:focus {
+  outline: none;
+}
+
+.banner:focus-visible {
+  outline: 2px solid var(--button-stroke);
+  outline-offset: -4px;
+}
+
+/* Reopened from the footer, the banner carries a close control. Leave room on
+   the right so the heading never runs under it. */
+.withClose .text {
+  padding-right: 44px;
+}
+
+.heading {
+  font-size: var(--t-lead);
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+.body,
+.current {
+  max-width: 75ch;
+  margin-top: var(--stack-s);
+  font-size: var(--t-small);
+  line-height: 1.3;
+}
+
+.current {
+  font-weight: 600;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--button-stroke);
+}
+
+/* Equal prominence: two identical buttons sharing the row equally. */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--stack-s);
+  margin-top: var(--stack-m);
+}
+
+.choice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: clamp(9px, 2.4vw, 14px) clamp(18px, 5vw, 34px);
+  background: transparent;
+  border: 1.5px solid var(--paper);
+  border-radius: var(--radius-pill);
+  color: var(--paper);
+  font-size: var(--t-small);
+  font-weight: 600;
+  line-height: 1.1;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.choice:hover {
+  background: var(--paper);
+  color: var(--black);
+}
+
+.close {
+  position: absolute;
+  top: calc(var(--stack-m) - 10px);
+  right: calc(var(--gutter) - 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--paper);
+  font-size: var(--t-h3);
+  line-height: 1;
+}
+
+.close:hover {
+  color: var(--button-stroke);
+}
+
+.closeLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Desktop: text on the left, the two choices side by side on the right. */
+@media (min-width: 1024px) {
+  .banner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: var(--stack-xl);
+  }
+
+  .withClose .text {
+    padding-right: 0;
+  }
+
+  .actions {
+    grid-template-columns: repeat(2, minmax(9em, 1fr));
+    margin-top: 0;
+  }
+
+  /* Clear of the close control above. */
+  .withClose .actions {
+    margin-right: var(--stack-l);
+  }
+
+  .choice {
+    border-width: 0.15vw;
+    padding: 1vw 1.95vw;
+  }
+
+  .close {
+    top: calc(var(--stack-m) - 0.5vw);
+  }
+}

@@ -188,13 +188,12 @@ export default function Header() {
         <MenuToggle open={open} onToggle={toggle} className="" />
       </div>
 
-      {/* The booking button sits in the top right corner of the homepage hero.
-          Other pages have no hero there, so it is not rendered on them. */}
-      {pathname === '/' && (
-        <div className={styles.ctaRow}>
-          <BookButton size="large" />
-        </div>
-      )}
+      {/* The booking button sits under the logo row on every page at mobile.
+          At desktop it moves to the top right corner of the homepage hero, and
+          other pages have no hero there, so it is hidden on them. */}
+      <div className={`${styles.ctaRow} ${pathname === '/' ? '' : styles.ctaRowNoHero}`}>
+        <BookButton size="large" />
+      </div>
 
       <nav
         id="primary-menu"

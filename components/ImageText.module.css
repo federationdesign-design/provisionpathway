@@ -26,6 +26,18 @@
   margin-top: 1.3em;
 }
 
+/* Mobile: the photograph runs full bleed and meets the band above with no gap,
+   as the homepage quote photograph does. The side gutter moves to the text. */
+@media not all and (min-width: 1024px) {
+  .section {
+    padding: 0;
+  }
+
+  .text {
+    padding-inline: var(--gutter);
+  }
+}
+
 /* Desktop: image left, text right. Measurements come from the 2000px About
    comp, divided by 20. The heading's first line and the image top align. */
 @media (min-width: 1024px) {

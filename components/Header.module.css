@@ -84,6 +84,13 @@
   margin-top: clamp(-48px, -10.8vw, -26px);
 }
 
+/* A page with no homepage hero has no opening padding beneath the button, so
+   the row carries that same space itself, matching the gap above the homepage
+   eyebrow (Opening.module.css). */
+.ctaRowNoHero {
+  padding-bottom: clamp(20px, 5.9vw, 44px);
+}
+
 .menu {
   display: grid;
   grid-template-rows: 0fr;
@@ -255,6 +262,10 @@
     top: 6.7vw;
     right: 3.5vw;
     margin-top: 0;
+  }
+
+  .ctaRowNoHero {
+    display: none;
   }
 
   .menu {

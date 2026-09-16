@@ -98,10 +98,10 @@ it. A band that meets the header directly, as on the About page, now takes a
 top margin equal to that overhang, rounded up to a whole pixel, so the header
 no longer sits over the band. The homepage is unchanged.
 
-1. **Header booking button.** The About comp has no booking button under the
-   navigation, and the grey band starts directly beneath the header, where the
-   homepage hero's button would sit. The button in the header is rendered on
-   the homepage only.
+1. **Header booking button.** Settled by the studio: at mobile the button
+   appears under the logo row on both pages, as on the homepage, although the
+   About comp shows none. At desktop it stays on the homepage only, since the
+   About comp's grey band starts where the homepage hero's button sits.
 2. **Active navigation item.** The About comp colours ABOUT as the current
    page, now in brand green. The homepage comp shows HOME uncoloured, and the
    homepage must stay unchanged, so the colour applies to every route except

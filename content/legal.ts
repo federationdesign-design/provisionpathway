@@ -28,12 +28,15 @@ export type LegalPageContent = {
 const email = 'info@theprovisionpathway.co.uk';
 const emailLink = `[[${email}|mailto:${email}]]`;
 
-// Provisional company details. Every one is a visible placeholder until the
-// client confirms it.
-const company = '[PLACEHOLDER: registered company name: The Provision Pathway]';
-const address = '[PLACEHOLDER: registered address: 123 Fake Street]';
-const ico = '[PLACEHOLDER: ICO registration: none held]';
-const dpContact = '[PLACEHOLDER: data protection contact: Zara Azad]';
+// Company details, confirmed by the client.
+const company = 'The Provision Pathway Ltd';
+const companyNumber = '17411072';
+// The registered address appears on the privacy policy and terms of use only.
+// It must not be used on /contact, in the footer or anywhere else.
+const address = 'Flat 5, Railway Cuttings, Kenilworth, CV8 1LQ';
+const dpContact = 'Zara Azad';
+
+const retention = 'kept only as long as necessary, in line with standard practice, and never longer than seven years';
 
 const draftNotice =
   '[PLACEHOLDER: draft adapted from another project, awaiting review by the client and a qualified adviser]';
@@ -118,7 +121,8 @@ export const privacyPolicy: LegalPageContent = {
       heading: 'Who we are',
       blocks: [
         draftNotice,
-        `${company} is the data controller for the personal information collected through this website. Our registered address is ${address}. Our data protection contact is ${dpContact}, who you can reach at ${emailLink}. ICO registration: ${ico}.`,
+        `${company} (company number ${companyNumber}) is the data controller for the personal information collected through this website. Our registered address is ${address}. Our data protection contact is ${dpContact}, who you can reach at ${emailLink}.`,
+        'We are not required to register with the Information Commissioner’s Office (ICO). We confirmed this using the ICO’s registration self-assessment.',
         'This policy explains what personal data we collect through this website, why we collect it, how we use it, and your rights under UK GDPR and the Data Protection Act 2018.',
       ],
     },
@@ -184,8 +188,8 @@ export const privacyPolicy: LegalPageContent = {
       blocks: [
         {
           list: [
-            'Enquiry emails: [PLACEHOLDER: retention period for enquiry emails]',
-            'Consultation booking records: [PLACEHOLDER: retention period for Calendly booking records]',
+            `Enquiry emails, from the contact form or sent to us directly: ${retention}.`,
+            `Consultation booking records: ${retention}.`,
             'Website analytics data: [PLACEHOLDER: Google Analytics data retention setting]',
             'Your cookie choice: stored in your own browser until you clear it, or until we ask again after changing our cookies policy.',
           ],
@@ -208,7 +212,7 @@ export const privacyPolicy: LegalPageContent = {
             'Rights about automated decision making: we do not make automated decisions about you or profile you.',
           ],
         },
-        `To exercise any of these rights, contact ${dpContact} at ${emailLink}. We will respond within one month. If you are unhappy with how we handle your data, you have the right to complain to the Information Commissioner’s Office (ICO) at [[ico.org.uk|https://ico.org.uk]].`,
+        `To exercise any of these rights, contact ${dpContact}, our data protection contact, at ${emailLink}. We will respond within one month. If you are unhappy with how we handle your data, you have the right to complain to the Information Commissioner’s Office (ICO) at [[ico.org.uk|https://ico.org.uk]].`,
       ],
     },
     {
@@ -237,7 +241,7 @@ export const termsOfUse: LegalPageContent = {
       heading: 'About these terms',
       blocks: [
         draftNotice,
-        `These terms apply to your use of this website, which is run by ${company}, ${address} (${emailLink}). By using the website, you agree to these terms.`,
+        `These terms apply to your use of this website, which is run by ${company}, company number ${companyNumber}, registered address ${address} (${emailLink}). By using the website, you agree to these terms.`,
         'These terms cover the website only. [PLACEHOLDER: whether separate terms apply to assessments and coaching, and where to find them]',
       ],
     },

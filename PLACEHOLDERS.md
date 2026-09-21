@@ -77,17 +77,7 @@ Every unconfirmed value on these pages is written as a
 (`--placeholder-bg`). Before launch, search the site for `PLACEHOLDER`: none may
 remain.
 
-**Provisional company details.** Confirmed detail is expected this evening.
-**The legal pages must not go to production carrying any of these values.**
-Each appears on the pages as a highlighted token, never as though it were
-confirmed.
-
-1. **REGISTERED_COMPANY_NAME** provisional: The Provision Pathway
-2. **REGISTERED_ADDRESS** provisional: 123 Fake Street
-3. **ICO_REGISTRATION** provisional: none held
-4. **DATA_PROTECTION_CONTACT** provisional: Zara Azad
-
-**Further gaps in the legal pages.** None of these were supplied, and each is a
+**Gaps in the legal pages.** None of these were supplied, and each is a
 highlighted token on the page:
 
 1. **LEGAL_LAST_UPDATED** The "Last updated" date on all three pages.
@@ -97,11 +87,11 @@ highlighted token on the page:
    of qualified advice.
 3. **INTERNATIONAL_TRANSFERS** Vercel, Resend, Calendly and Google may process
    data outside the UK. The safeguards relied on are not stated.
-4. **RETENTION_ENQUIRY_EMAILS** How long enquiry emails are kept in the inbox.
-5. **RETENTION_BOOKING_RECORDS** How long Calendly booking records are kept.
-6. **GA4_RETENTION_SETTING** The data retention setting in the Google Analytics
-   property.
-7. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
+4. **GA4_RETENTION_SETTING** The data retention setting in the Google Analytics
+   property (Admin, Data collection and modification, Data retention). The
+   policy must state whatever the property is actually set to. It has not been
+   read from the property, so it is still a token.
+5. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
    coaching services. The terms of use cover the website only.
 
 **Legal bases chosen for review.** The privacy policy states consent for

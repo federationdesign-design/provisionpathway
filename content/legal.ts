@@ -1,7 +1,7 @@
 // Copy for the cookies policy, privacy policy and terms of use.
 //
-// Adapted from the studio's policies for another project, and not yet reviewed
-// by the client. See LEGAL_PAGES_REVIEW in PLACEHOLDERS.md.
+// Adapted from the studio's policies for another project, and signed off by the
+// client on 21 September 2026. See LEGAL_PAGES_REVIEW in PLACEHOLDERS.md.
 //
 // Inline markup, rendered by components/RichText.tsx:
 //   [PLACEHOLDER: ...]   shown highlighted, so unconfirmed detail can never be
@@ -38,9 +38,7 @@ const dpContact = 'Zara Azad';
 
 const retention = 'kept only as long as necessary, in line with standard practice, and never longer than seven years';
 
-const draftNotice =
-  '[PLACEHOLDER: draft adapted from another project, awaiting review by the client and a qualified adviser]';
-const lastUpdated = '[PLACEHOLDER: date this page is approved]';
+const lastUpdated = '21 September 2026';
 
 export const legalIntro = { lastUpdatedLabel: 'Last updated:' };
 
@@ -54,7 +52,6 @@ export const cookiesPolicy: LegalPageContent = {
     {
       heading: 'About this policy',
       blocks: [
-        draftNotice,
         `This policy explains the cookies and similar technologies used on this website, run by ${company}. For how we handle personal data more widely, see our [[Privacy Policy|/privacy-policy]].`,
       ],
     },
@@ -120,7 +117,6 @@ export const privacyPolicy: LegalPageContent = {
     {
       heading: 'Who we are',
       blocks: [
-        draftNotice,
         `${company} (company number ${companyNumber}) is the data controller for the personal information collected through this website. Our registered address is ${address}. Our data protection contact is ${dpContact}, who you can reach at ${emailLink}.`,
         'We are not required to register with the Information Commissioner’s Office (ICO). We confirmed this using the ICO’s registration self-assessment.',
         'This policy explains what personal data we collect through this website, why we collect it, how we use it, and your rights under UK GDPR and the Data Protection Act 2018.',
@@ -132,7 +128,7 @@ export const privacyPolicy: LegalPageContent = {
         {
           list: [
             'When you send an enquiry through our contact form: your name, email address, telephone number if you give one, how you would like us to contact you, your message, and your agreement to us handling your enquiry.',
-            'When you book a consultation through Calendly: the details you enter in Calendly’s booking form, such as your name and email address.',
+            'When you book a consultation through Calendly: the name and email address you enter in Calendly’s booking form.',
             'When you email us directly: your email address and anything you include in your message.',
             'With your consent only: information about how you use the website, collected by Google Analytics, such as the pages you view, how you arrived, and the type of device and browser you use.',
             'When you visit the website: technical information such as your IP address, which our hosting provider processes in order to deliver the website to you.',
@@ -175,11 +171,11 @@ export const privacyPolicy: LegalPageContent = {
           list: [
             'Vercel hosts the website. It processes technical information such as IP addresses to deliver pages, and passes contact form submissions on to be emailed to us without storing them.',
             'Resend sends contact form submissions to our inbox. It receives the contents of your enquiry.',
-            'Calendly handles consultation bookings. It receives the details you enter when you book. If you have accepted cookies, it also sets cookies when the booking window opens on this website.',
+            'Calendly handles consultation bookings. It receives only the name and email address you enter when you book. If you have accepted cookies, it also sets cookies when the booking window opens on this website.',
             'Google Analytics 4 measures how the website is used. It receives usage and device information, and only if you have accepted cookies.',
           ],
         },
-        'These providers may process data outside the UK. [PLACEHOLDER: safeguards for international transfers, to be confirmed]',
+        'Some personal data is processed in the United States by Calendly, Google, Resend and Vercel. Each provider relies on the safeguards set out in its own data processing terms, such as the UK Extension to the EU-US Data Privacy Framework or the UK International Data Transfer Addendum.',
         'We do not sell your personal data to anyone.',
       ],
     },
@@ -240,9 +236,8 @@ export const termsOfUse: LegalPageContent = {
     {
       heading: 'About these terms',
       blocks: [
-        draftNotice,
         `These terms apply to your use of this website, which is run by ${company}, company number ${companyNumber}, registered address ${address} (${emailLink}). By using the website, you agree to these terms.`,
-        'These terms cover the website only. [PLACEHOLDER: whether separate terms apply to assessments and coaching, and where to find them]',
+        'These terms cover the website only. No separate terms apply to our assessment or coaching services.',
       ],
     },
     {

@@ -67,28 +67,22 @@ cookies and stops GA sending.
 **LEGAL_PAGES_REVIEW**
 `/cookies-policy`, `/privacy-policy` and `/terms-of-use` (copy in
 `content/legal.ts`) are adapted from the studio's policies for another
-project. They were rewritten for this business, but they have not been
-reviewed. They need review by the client, and ideally by someone qualified,
-before they can be relied on. Each page opens with a highlighted draft notice
-saying so, to be removed on approval.
+project and rewritten for this business. The client signed them off on
+21 September 2026, the "Last updated" date on all three, and the draft notice
+has been removed.
 
 Every unconfirmed value on these pages is written as a
 `[PLACEHOLDER: ...]` token, which the pages render highlighted in yellow
 (`--placeholder-bg`). Before launch, search the site for `PLACEHOLDER`: none may
 remain.
 
-**Gaps in the legal pages.** None of these were supplied, and each is a
-highlighted token on the page:
+**Gap still in the legal pages.** Not supplied, and still a highlighted token
+on the privacy policy, although the pages have been signed off:
 
-1. **LEGAL_LAST_UPDATED** The "Last updated" date on all three pages.
-2. **SPECIAL_CATEGORY_CONDITION** Enquiries about a young person may include
+1. **SPECIAL_CATEGORY_CONDITION** Enquiries about a young person may include
    health information, which is special category data. The privacy policy
    needs the condition relied on to process it. This is the point most in need
    of qualified advice.
-3. **INTERNATIONAL_TRANSFERS** Vercel, Resend, Calendly and Google may process
-   data outside the UK. The safeguards relied on are not stated.
-4. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
-   coaching services. The terms of use cover the website only.
 
 **Legal bases chosen for review.** The privacy policy states consent for
 replying to enquiries (the form's checkbox) and for analytics, steps before a

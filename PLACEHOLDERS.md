@@ -87,11 +87,7 @@ highlighted token on the page:
    of qualified advice.
 3. **INTERNATIONAL_TRANSFERS** Vercel, Resend, Calendly and Google may process
    data outside the UK. The safeguards relied on are not stated.
-4. **GA4_RETENTION_SETTING** The data retention setting in the Google Analytics
-   property (Admin, Data collection and modification, Data retention). The
-   policy must state whatever the property is actually set to. It has not been
-   read from the property, so it is still a token.
-5. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
+4. **SERVICE_TERMS** Whether separate terms apply to the paid assessment and
    coaching services. The terms of use cover the website only.
 
 **Legal bases chosen for review.** The privacy policy states consent for

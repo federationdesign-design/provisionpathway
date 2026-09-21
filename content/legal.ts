@@ -190,7 +190,7 @@ export const privacyPolicy: LegalPageContent = {
           list: [
             `Enquiry emails, from the contact form or sent to us directly: ${retention}.`,
             `Consultation booking records: ${retention}.`,
-            'Website analytics data: [PLACEHOLDER: Google Analytics data retention setting]',
+            'Website analytics data: 14 months, the data retention setting in our Google Analytics property.',
             'Your cookie choice: stored in your own browser until you clear it, or until we ask again after changing our cookies policy.',
           ],
         },

@@ -46,7 +46,10 @@
   font-size: clamp(140px, 45vw, 315px);
   font-weight: 800;
   line-height: 0.5;
-  margin-top: clamp(-14px, -3.4vw, -8px);
+  /* The short line box leaves the glyph's top above the box. This margin brings
+     it down to the cap height of the quote's first line, as on the comp, clear
+     of the photograph's top edge. In em, so it tracks the glyph's size. */
+  margin-top: 0.12em;
 }
 
 .text {

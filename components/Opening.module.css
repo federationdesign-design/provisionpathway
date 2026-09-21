@@ -47,9 +47,11 @@
   letter-spacing: -0.03em;
 }
 
+/* The artwork's top flag sits at the top of its box, so this margin is the
+   clear space beneath the headline. Its foot meets the divider directly. */
 .art {
   position: relative;
-  margin-top: clamp(-118px, -24vw, -62px);
+  margin-top: var(--stack-m);
   aspect-ratio: 3386 / 2968;
 }
 
